@@ -11,6 +11,9 @@ import {
   Building2,
   ChevronDown,
   ChevronUp,
+  CreditCard,
+  Send,
+  FileWarning,
 } from "lucide-react";
 
 const translations = {
@@ -31,13 +34,16 @@ const translations = {
     helpNow: "긴급 도움 요청",
 
     tipsTitle: "범죄예방 정보",
-    tipsSubtitle: "자주 발생하는 생활범죄 유형을 확인하세요.",
+    tipsSubtitle: "외국인 대상 주요 생활범죄 및 사기 유형을 확인하세요.",
 
     tip1: "보이스피싱",
     tip2: "취업 · 알바 사기",
     tip3: "주거 · 임대 사기",
     tip4: "연애 · 친분 사기",
     tip5: "긴급 신고 이용 안내",
+    tip6: "환전 사기",
+    tip7: "해외송금 사기",
+    tip8: "비자 · 체류 사기",
 
     detailLabelSituation: "주요 수법",
     detailLabelPrevention: "예방 방법",
@@ -48,19 +54,19 @@ const translations = {
     tip1Situation:
       "검찰·경찰·금융기관을 사칭하여 계좌이체, 앱 설치, 비밀번호 입력을 요구하는 범죄입니다.",
     tip1Prevention:
-      "공공기관은 전화로 금전 요구를 하지 않습니다. 요구 시 즉시 통화 종료 후 112 또는 공식번호로 다시 확인하세요.",
+      "공공기관은 전화로 금전 요구를 하지 않습니다. 요구 시 즉시 통화를 종료하고 112 또는 공식번호로 다시 확인하세요.",
     tip1Action:
       "이미 송금했거나 앱을 설치했다면 즉시 112에 신고하고 은행에 지급정지를 요청하세요.",
 
     tip2Situation:
-      "고수익·단기 알바를 미끼로 선입금, 신분증, 계좌정보를 요구하는 사기입니다.",
+      "고수익·단기 알바를 미끼로 선입금, 신분증 사진, 계좌정보를 요구하는 사기입니다.",
     tip2Prevention:
-      "‘쉬운 고수익’은 대부분 사기입니다. 채용 전 업체명, 사업자등록 여부, 후기 등을 확인하세요.",
+      "‘쉽고 돈 많이 버는 일’은 사기일 가능성이 높습니다. 채용 전 회사명, 사업자등록, 후기 등을 확인하세요.",
     tip2Action:
       "입금 요구 화면과 대화 내용을 캡처한 뒤 즉시 112에 신고하세요.",
 
     tip3Situation:
-      "가짜 집주인 또는 중개인이 계약금 입금을 유도하거나 실제 소유자가 아닌 경우입니다.",
+      "가짜 집주인 또는 중개인이 계약금 입금을 재촉하거나 실제 소유자가 아닌 경우입니다.",
     tip3Prevention:
       "계약 전 등기부등본, 실소유자, 공인중개사 등록 여부를 반드시 확인하고 현장을 직접 방문하세요.",
     tip3Action:
@@ -79,6 +85,27 @@ const translations = {
       "현재 위치, 상황, 상대 특징을 짧고 명확하게 말할 준비를 하세요.",
     tip5Action:
       "앱에서 112 버튼을 누르거나 주변 사람에게 즉시 도움을 요청하세요.",
+
+    tip6Situation:
+      "길거리, SNS, 메신저 등에서 환전을 도와주겠다며 돈만 받고 잠적하거나 불리한 비율로 속이는 경우입니다.",
+    tip6Prevention:
+      "공식 환전소나 은행만 이용하세요. 개인 간 환전 제안은 피하고, 즉시 입금을 요구하면 의심하세요.",
+    tip6Action:
+      "계좌번호, 대화내용, 송금내역을 보관한 뒤 즉시 112에 신고하세요.",
+
+    tip7Situation:
+      "해외송금 대행을 해주겠다며 선입금을 유도하거나 수수료 명목으로 추가 돈을 요구하는 사기입니다.",
+    tip7Prevention:
+      "은행, 공식 송금업체, 검증된 앱만 이용하세요. 개인 계좌 송금 요청은 피하세요.",
+    tip7Action:
+      "송금 전이라면 즉시 중단하고, 송금 후라면 은행과 112에 바로 연락하세요.",
+
+    tip8Situation:
+      "비자 연장, 체류 자격 변경, 출입국 문제 해결을 명목으로 금전을 요구하는 사기입니다.",
+    tip8Prevention:
+      "출입국관리사무소, 정부 공식 홈페이지, 공인 행정절차만 이용하세요. 개인 브로커를 주의하세요.",
+    tip8Action:
+      "서류, 대화기록, 송금내역을 보관하고 즉시 112 또는 관련 기관에 신고하세요.",
 
     helpTitle: "가까운 경찰관서 찾기",
     helpSubtitle:
@@ -112,13 +139,17 @@ const translations = {
     helpNow: "Request Urgent Help",
 
     tipsTitle: "Crime Prevention Info",
-    tipsSubtitle: "Check common crime and scam categories.",
+    tipsSubtitle:
+      "Check common daily crimes and scam types targeting foreign nationals.",
 
     tip1: "Voice Phishing",
     tip2: "Job Scam",
     tip3: "Housing / Rental Scam",
     tip4: "Romance Scam",
     tip5: "How to Use Emergency Calls",
+    tip6: "Currency Exchange Scam",
+    tip7: "Overseas Remittance Scam",
+    tip8: "Visa / Stay Scam",
 
     detailLabelSituation: "Common Method",
     detailLabelPrevention: "How to Prevent",
@@ -161,6 +192,27 @@ const translations = {
     tip5Action:
       "Tap the 112 button in this app or ask nearby people for help right away.",
 
+    tip6Situation:
+      "Someone offers private currency exchange on the street or online, takes your money, and disappears or uses an unfair rate.",
+    tip6Prevention:
+      "Use only banks or official exchange offices. Avoid personal exchange offers.",
+    tip6Action:
+      "Keep the account number, chats, and transfer records, then report to 112 immediately.",
+
+    tip7Situation:
+      "A scammer offers to send money overseas for you and asks for advance payment or extra fees.",
+    tip7Prevention:
+      "Use only banks, official remittance services, or verified apps. Avoid personal accounts.",
+    tip7Action:
+      "If you have not sent money yet, stop immediately. If you already sent it, contact your bank and 112 right away.",
+
+    tip8Situation:
+      "Someone asks for money, claiming they can solve visa extension or immigration stay problems.",
+    tip8Prevention:
+      "Use only immigration offices, official government websites, or authorized procedures. Be careful with private brokers.",
+    tip8Action:
+      "Keep documents, chats, and transfer records, then report to 112 or the relevant office immediately.",
+
     helpTitle: "Find Nearby Police Office",
     helpSubtitle:
       "Use your location to find the nearest police station, precinct, or substation.",
@@ -194,13 +246,16 @@ const translations = {
     helpNow: "فوری مدد کی درخواست",
 
     tipsTitle: "جرم سے بچاؤ کی معلومات",
-    tipsSubtitle: "عام جرائم اور دھوکہ دہی کی اقسام دیکھیں۔",
+    tipsSubtitle: "غیر ملکیوں کے خلاف عام جرائم اور فراڈ کی اقسام دیکھیں۔",
 
     tip1: "وائس فشنگ",
     tip2: "ملازمت یا پارٹ ٹائم فراڈ",
     tip3: "رہائش یا کرایہ فراڈ",
     tip4: "رومانوی فراڈ",
     tip5: "ہنگامی کال استعمال کرنے کا طریقہ",
+    tip6: "کرنسی ایکسچینج فراڈ",
+    tip7: "بیرون ملک رقم بھیجنے کا فراڈ",
+    tip8: "ویزا / قیام فراڈ",
 
     detailLabelSituation: "عام طریقہ",
     detailLabelPrevention: "بچاؤ کا طریقہ",
@@ -243,6 +298,27 @@ const translations = {
     tip5Action:
       "اس ایپ میں 112 بٹن دبائیں یا آس پاس کے لوگوں سے فوراً مدد مانگیں۔",
 
+    tip6Situation:
+      "سڑک یا آن لائن نجی کرنسی ایکسچینج کی پیشکش کے بعد رقم لے کر غائب ہو جانا یا غلط ریٹ دینا۔",
+    tip6Prevention:
+      "صرف بینک یا سرکاری ایکسچینج آفس استعمال کریں۔ ذاتی ایکسچینج آفر سے بچیں۔",
+    tip6Action:
+      "اکاؤنٹ نمبر، چیٹ اور ٹرانسفر ریکارڈ محفوظ کریں، پھر فوراً 112 پر رپورٹ کریں۔",
+
+    tip7Situation:
+      "کوئی شخص بیرون ملک رقم بھیجنے میں مدد کے نام پر پیشگی رقم یا اضافی فیس مانگتا ہے۔",
+    tip7Prevention:
+      "صرف بینک، سرکاری ریمیٹنس سروس یا تصدیق شدہ ایپ استعمال کریں۔ ذاتی اکاؤنٹ سے بچیں۔",
+    tip7Action:
+      "اگر ابھی رقم نہیں بھیجی تو فوراً رک جائیں۔ اگر بھیج دی ہے تو بینک اور 112 سے فوراً رابطہ کریں۔",
+
+    tip8Situation:
+      "ویزا توسیع یا قیام کے مسئلے حل کرنے کے نام پر رقم مانگی جاتی ہے۔",
+    tip8Prevention:
+      "صرف امیگریشن آفس، سرکاری ویب سائٹ یا مجاز طریقہ کار استعمال کریں۔ نجی بروکر سے محتاط رہیں۔",
+    tip8Action:
+      "دستاویزات، چیٹ اور ٹرانسفر ریکارڈ محفوظ کریں، پھر 112 یا متعلقہ دفتر سے فوراً رابطہ کریں۔",
+
     helpTitle: "قریبی پولیس دفتر تلاش کریں",
     helpSubtitle:
       "اپنی موجودہ جگہ کے قریب پولیس اسٹیشن، چوکی یا دفتر تلاش کریں۔",
@@ -276,13 +352,17 @@ const translations = {
     helpNow: "Срочно нужна помощь",
 
     tipsTitle: "Информация по профилактике преступлений",
-    tipsSubtitle: "Проверьте распространённые виды преступлений и мошенничества.",
+    tipsSubtitle:
+      "Проверьте распространённые преступления и мошенничество против иностранцев.",
 
     tip1: "Голосовой фишинг",
     tip2: "Мошенничество с работой",
     tip3: "Жилищное / арендное мошенничество",
     tip4: "Романтическое мошенничество",
     tip5: "Как пользоваться экстренным вызовом",
+    tip6: "Мошенничество с обменом валюты",
+    tip7: "Мошенничество с международным переводом",
+    tip8: "Визовое / миграционное мошенничество",
 
     detailLabelSituation: "Типичная схема",
     detailLabelPrevention: "Как защититься",
@@ -325,6 +405,27 @@ const translations = {
     tip5Action:
       "Нажмите кнопку 112 в приложении или срочно попросите помощи у людей рядом.",
 
+    tip6Situation:
+      "Кто-то предлагает частный обмен валюты на улице или онлайн, берёт деньги и исчезает или использует нечестный курс.",
+    tip6Prevention:
+      "Пользуйтесь только банками или официальными обменными пунктами. Избегайте частных предложений.",
+    tip6Action:
+      "Сохраните номер счёта, переписку и данные перевода, затем немедленно сообщите в 112.",
+
+    tip7Situation:
+      "Мошенник предлагает отправить деньги за границу и просит предоплату или дополнительные комиссии.",
+    tip7Prevention:
+      "Пользуйтесь только банками, официальными сервисами переводов или проверенными приложениями.",
+    tip7Action:
+      "Если вы ещё не отправили деньги — немедленно остановитесь. Если уже отправили — сразу свяжитесь с банком и 112.",
+
+    tip8Situation:
+      "Кто-то просит деньги, обещая решить вопросы продления визы или миграционного статуса.",
+    tip8Prevention:
+      "Пользуйтесь только иммиграционными офисами, официальными сайтами и законными процедурами. Осторожно с частными посредниками.",
+    tip8Action:
+      "Сохраните документы, переписку и переводы, затем сразу обратитесь в 112 или профильное ведомство.",
+
     helpTitle: "Найти ближайший полицейский участок",
     helpSubtitle:
       "Используйте своё местоположение, чтобы найти ближайший участок, отделение или пост полиции.",
@@ -358,13 +459,16 @@ const translations = {
     helpNow: "请求紧急帮助",
 
     tipsTitle: "防犯罪信息",
-    tipsSubtitle: "请查看常见犯罪和诈骗类型。",
+    tipsSubtitle: "请查看针对外国人的常见犯罪和诈骗类型。",
 
     tip1: "语音诈骗",
     tip2: "求职 / 打工诈骗",
     tip3: "住房 / 租赁诈骗",
     tip4: "恋爱诈骗",
     tip5: "紧急报警使用说明",
+    tip6: "换汇诈骗",
+    tip7: "海外汇款诈骗",
+    tip8: "签证 / 居留诈骗",
 
     detailLabelSituation: "常见手法",
     detailLabelPrevention: "预防方法",
@@ -406,6 +510,27 @@ const translations = {
       "提前准备好简洁说明自己的位置、现场情况和嫌疑人特征。",
     tip5Action:
       "点击本应用中的112按钮，或立即向周围人员求助。",
+
+    tip6Situation:
+      "有人在路边或网上提出私人换汇，拿到钱后消失，或使用不公平汇率欺骗。",
+    tip6Prevention:
+      "请只使用银行或正规换汇点，避免私人换汇提议。",
+    tip6Action:
+      "保留账户号码、聊天记录和转账凭证，然后立即向112报警。",
+
+    tip7Situation:
+      "诈骗分子声称可以代办海外汇款，并要求预付款或额外手续费。",
+    tip7Prevention:
+      "请只使用银行、正规汇款服务或可信应用，不要向个人账户转账。",
+    tip7Action:
+      "未转账前请立即停止；已转账则马上联系银行和112。",
+
+    tip8Situation:
+      "有人以签证延期、居留资格变更或解决出入境问题为由索要金钱。",
+    tip8Prevention:
+      "请只通过出入境管理机构、政府官网和正规程序办理，谨防私人中介。",
+    tip8Action:
+      "保留文件、聊天记录和转账记录，并立即联系112或相关机构。",
 
     helpTitle: "查找附近警察机关",
     helpSubtitle:
@@ -604,6 +729,39 @@ export default function App() {
         situation: t.tip5Situation,
         prevention: t.tip5Prevention,
         action: t.tip5Action,
+      },
+    },
+    {
+      key: 6,
+      title: t.tip6,
+      subtitle: t.tipsSubtitle,
+      icon: <CreditCard size={18} />,
+      detail: {
+        situation: t.tip6Situation,
+        prevention: t.tip6Prevention,
+        action: t.tip6Action,
+      },
+    },
+    {
+      key: 7,
+      title: t.tip7,
+      subtitle: t.tipsSubtitle,
+      icon: <Send size={18} />,
+      detail: {
+        situation: t.tip7Situation,
+        prevention: t.tip7Prevention,
+        action: t.tip7Action,
+      },
+    },
+    {
+      key: 8,
+      title: t.tip8,
+      subtitle: t.tipsSubtitle,
+      icon: <FileWarning size={18} />,
+      detail: {
+        situation: t.tip8Situation,
+        prevention: t.tip8Prevention,
+        action: t.tip8Action,
       },
     },
   ];
