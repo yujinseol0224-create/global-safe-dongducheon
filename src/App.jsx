@@ -1,15 +1,5 @@
 import { useMemo, useState } from "react";
-import {
-  Globe,
-  ShieldAlert,
-  ShieldCheck,
-  MapPin,
-  Phone,
-  ChevronLeft,
-  Languages,
-  Siren,
-  Building2,
-} from "lucide-react";
+import { Globe, ShieldAlert, ShieldCheck, MapPin, Phone, ChevronLeft, Languages, Siren, Building2 } from "lucide-react";
 
 const translations = {
   ko: {
@@ -42,6 +32,26 @@ const translations = {
     policeGuide: "버튼을 누르면 지도 앱에서 내 주변 경찰관서를 바로 검색합니다.",
     direct112: "상담 요청 대신 112 바로 연결",
     footer: "외국인·주민 대상 안전 안내용 시범 웹앱",
+    detailLabelSituation: "주요 수법",
+    detailLabelPrevention: "예방 방법",
+    detailLabelAction: "도움이 필요할 때",
+    tip1Situation: "검찰·경찰·금융기관을 사칭하며 계좌이체, 앱 설치, 비밀번호 입력을 요구합니다.",
+    tip1Prevention: "전화로 돈·개인정보·원격제어 앱 설치를 요구하면 즉시 끊고, 공식 번호로 다시 확인하세요.",
+    tip1Action: "송금했거나 악성 앱을 설치했다면 바로 112에 신고하고, 은행 지급정지를 요청하세요.",
+    tip2Situation: "고수익 알바를 미끼로 선입금, 신분증 사진, 계좌정보, 메신저 업무지시를 요구합니다.",
+    tip2Prevention: "채용 전 돈을 요구하거나 지나치게 쉬운 고수익을 강조하면 의심하고, 회사 정보를 검색하세요.",
+    tip2Action: "입금 요구 화면과 대화 내용을 저장한 뒤 112에 신고하세요.",
+    tip3Situation: "가짜 집주인·중개인이 계약금 입금을 재촉하거나, 등기·소유관계가 불명확한 집을 소개합니다.",
+    tip3Prevention: "계약 전 등기부등본, 실제 소유자, 중개사 등록 여부를 확인하고 현장을 직접 보세요.",
+    tip3Action: "계약서, 송금내역, 대화기록을 보관하고 즉시 112 또는 관련 기관에 상담하세요.",
+    tip4Situation: "SNS·채팅앱에서 빠르게 친밀감을 쌓은 뒤 돈, 선물, 투자, 항공권 비용을 요구합니다.",
+    tip4Prevention: "직접 만나기 전 금전 요구는 거절하고, 신분이 불명확한 상대에게 송금하지 마세요.",
+    tip4Action: "상대 프로필과 대화 내용을 캡처하고 112에 신고하세요.",
+    tip5Situation: "급한 범죄 피해, 협박, 폭행, 스토킹, 사기 의심 상황에서는 즉시 신고가 필요합니다.",
+    tip5Prevention: "정확한 위치, 상황, 상대 특징을 짧고 명확하게 말할 준비를 하세요.",
+    tip5Action: "앱에서 112 버튼을 누르거나 주변 사람에게 도움을 요청하세요.",
+    showDetails: "상세보기",
+    hideDetails: "접기",
   },
   en: {
     langLabel: "Language",
@@ -73,6 +83,26 @@ const translations = {
     policeGuide: "This opens your map app and searches nearby police offices around your location.",
     direct112: "Direct 112 connection instead of a form",
     footer: "Pilot safety web app for residents and foreign nationals",
+    detailLabelSituation: "Common Method",
+    detailLabelPrevention: "How to Prevent",
+    detailLabelAction: "When You Need Help",
+    tip1Situation: "Scammers pretend to be police, prosecutors, or banks and ask for transfers, app installs, or passwords.",
+    tip1Prevention: "If someone asks for money, personal data, or remote-control app installation by phone, hang up and verify through an official number.",
+    tip1Action: "If you sent money or installed a suspicious app, call 112 immediately and ask your bank to stop the transaction.",
+    tip2Situation: "Fraudsters offer easy high-paying jobs and then ask for advance payment, ID photos, bank details, or messenger-based work orders.",
+    tip2Prevention: "Be cautious if a job asks for money first or promises unusually easy high income. Search the company before accepting.",
+    tip2Action: "Save the payment request screen and chat records, then report it to 112.",
+    tip3Situation: "Fake landlords or brokers rush deposit payments or show homes with unclear ownership and registration status.",
+    tip3Prevention: "Before signing, check the registry, confirm the real owner, verify the real-estate agent, and visit the place in person.",
+    tip3Action: "Keep the contract, transfer records, and chats, then contact 112 or a related support service immediately.",
+    tip4Situation: "Someone on social media or chat quickly builds trust and then asks for money, gifts, investments, or travel expenses.",
+    tip4Prevention: "Refuse all money requests before meeting in person and never transfer funds to someone whose identity is unclear.",
+    tip4Action: "Capture the profile and conversation records, then report them to 112.",
+    tip5Situation: "Immediate reporting is needed in cases of threats, assault, stalking, fraud suspicion, or any urgent danger.",
+    tip5Prevention: "Be ready to explain your location, the situation, and the suspect’s features briefly and clearly.",
+    tip5Action: "Tap the 112 button in this app or ask nearby people for help right away.",
+    showDetails: "Show Details",
+    hideDetails: "Hide Details",
   },
   ur: {
     langLabel: "زبان",
@@ -104,6 +134,26 @@ const translations = {
     policeGuide: "یہ آپ کی نقشہ ایپ کھول کر آپ کے قریب پولیس دفاتر تلاش کرے گا۔",
     direct112: "فارم کے بجائے براہ راست 112 کال",
     footer: "رہائشیوں اور غیر ملکیوں کے لیے آزمائشی حفاظتی ویب ایپ",
+    detailLabelSituation: "عام طریقہ",
+    detailLabelPrevention: "بچاؤ کا طریقہ",
+    detailLabelAction: "مدد چاہیے تو",
+    tip1Situation: "دھوکہ باز پولیس، پراسیکیوٹر یا بینک بن کر رقم کی منتقلی، ایپ انسٹال کرنے یا پاس ورڈ مانگتے ہیں۔",
+    tip1Prevention: "اگر فون پر پیسے، ذاتی معلومات یا ریموٹ ایپ انسٹال کرنے کا کہا جائے تو فوراً کال بند کریں اور سرکاری نمبر سے دوبارہ تصدیق کریں۔",
+    tip1Action: "اگر آپ نے رقم بھیجی ہے یا مشکوک ایپ انسٹال کی ہے تو فوراً 112 پر کال کریں اور بینک سے ادائیگی روکنے کو کہیں۔",
+    tip2Situation: "آسان اور زیادہ آمدنی والی ملازمت کا لالچ دے کر پہلے رقم، شناختی تصویر، بینک معلومات یا میسنجر کے ذریعے کام کروایا جاتا ہے۔",
+    tip2Prevention: "اگر ملازمت کے نام پر پہلے رقم مانگی جائے یا بہت آسان زیادہ کمائی کا وعدہ ہو تو شک کریں اور کمپنی کی معلومات تلاش کریں۔",
+    tip2Action: "ادائیگی کی اسکرین اور گفتگو محفوظ کریں، پھر 112 پر رپورٹ کریں۔",
+    tip3Situation: "جعلی مالک یا بروکر ایڈوانس رقم جلدی مانگتا ہے یا ایسی رہائش دکھاتا ہے جس کی ملکیت واضح نہیں ہوتی۔",
+    tip3Prevention: "معاہدے سے پہلے رجسٹری، اصل مالک، بروکر کی رجسٹریشن اور جگہ کی حقیقی حالت ضرور چیک کریں۔",
+    tip3Action: "معاہدہ، رقم منتقلی کا ریکارڈ اور چیٹ محفوظ کریں، پھر فوراً 112 یا متعلقہ ادارے سے رابطہ کریں۔",
+    tip4Situation: "سوشل میڈیا یا چیٹ پر جلدی قربت بنا کر پھر پیسے، تحفے، سرمایہ کاری یا سفر کے اخراجات مانگے جاتے ہیں۔",
+    tip4Prevention: "ذاتی ملاقات سے پہلے ہر مالی مطالبہ مسترد کریں اور غیر واضح شناخت والے شخص کو رقم نہ بھیجیں۔",
+    tip4Action: "پروفائل اور گفتگو کے اسکرین شاٹ محفوظ کریں اور 112 پر رپورٹ کریں۔",
+    tip5Situation: "دھمکی، حملہ، اسٹاکنگ، دھوکہ دہی کے شبہ یا کسی فوری خطرے میں فوراً رپورٹ کرنا ضروری ہے۔",
+    tip5Prevention: "اپنی جگہ، صورتحال اور مشتبہ شخص کی خصوصیات مختصر اور واضح طور پر بتانے کے لیے تیار رہیں۔",
+    tip5Action: "اس ایپ میں 112 بٹن دبائیں یا آس پاس کے لوگوں سے فوراً مدد مانگیں۔",
+    showDetails: "تفصیل دیکھیں",
+    hideDetails: "بند کریں",
   },
   ru: {
     langLabel: "Язык",
@@ -135,6 +185,26 @@ const translations = {
     policeGuide: "Кнопка откроет карту и выполнит поиск ближайших полицейских отделений рядом с вами.",
     direct112: "Прямое соединение с 112 вместо формы",
     footer: "Пилотное веб-приложение по безопасности для жителей и иностранцев",
+    detailLabelSituation: "Типичная схема",
+    detailLabelPrevention: "Как защититься",
+    detailLabelAction: "Если нужна помощь",
+    tip1Situation: "Мошенники выдают себя за полицию, прокуратуру или банк и требуют перевод денег, установку приложения или пароль.",
+    tip1Prevention: "Если по телефону просят деньги, личные данные или установить приложение удалённого доступа, немедленно завершите звонок и проверьте информацию по официальному номеру.",
+    tip1Action: "Если вы уже перевели деньги или установили подозрительное приложение, сразу позвоните 112 и попросите банк остановить операцию.",
+    tip2Situation: "Под видом лёгкой и высокооплачиваемой работы требуют предоплату, фото документов, банковские данные или задания через мессенджер.",
+    tip2Prevention: "Будьте осторожны, если работа требует деньги заранее или обещает слишком лёгкий высокий доход. Проверьте информацию о компании.",
+    tip2Action: "Сохраните экран с требованием оплаты и переписку, затем сообщите в 112.",
+    tip3Situation: "Ложные владельцы или посредники торопят с переводом задатка и предлагают жильё с неясным правом собственности.",
+    tip3Prevention: "До подписания договора проверьте регистрационные документы, настоящего владельца, лицензию посредника и осмотрите жильё лично.",
+    tip3Action: "Сохраните договор, переводы и переписку, затем сразу обратитесь в 112 или профильную службу помощи.",
+    tip4Situation: "Кто-то быстро входит в доверие через соцсети или чат, а затем просит деньги, подарки, инвестиции или оплату поездки.",
+    tip4Prevention: "Не отправляйте деньги до личной встречи и не переводите средства человеку с неясной личностью.",
+    tip4Action: "Сделайте скриншоты профиля и переписки, затем сообщите в 112.",
+    tip5Situation: "Немедленное сообщение необходимо при угрозах, нападении, сталкинге, подозрении на мошенничество или любой срочной опасности.",
+    tip5Prevention: "Подготовьтесь коротко и ясно сообщить своё местоположение, ситуацию и приметы подозреваемого.",
+    tip5Action: "Нажмите кнопку 112 в приложении или срочно попросите помощи у людей рядом.",
+    showDetails: "Подробнее",
+    hideDetails: "Скрыть",
   },
   zh: {
     langLabel: "语言",
@@ -166,6 +236,26 @@ const translations = {
     policeGuide: "点击按钮后，将在地图应用中直接搜索您附近的警察机关。",
     direct112: "无需表单，直接连接112",
     footer: "面向居民和外国人的试点安全网页应用",
+    detailLabelSituation: "常见手法",
+    detailLabelPrevention: "预防方法",
+    detailLabelAction: "需要帮助时",
+    tip1Situation: "诈骗分子冒充警方、检察机关或银行，要求转账、安装应用程序或提供密码。",
+    tip1Prevention: "如果对方在电话中要求金钱、个人信息或安装远程控制应用，请立即挂断，并通过官方号码重新确认。",
+    tip1Action: "如果已经转账或安装了可疑应用，请立即拨打112，并联系银行申请止付。",
+    tip2Situation: "以轻松高薪兼职为诱饵，要求先付款、提供身份证照片、银行信息或通过聊天软件下达工作指示。",
+    tip2Prevention: "如果工作要求先交钱，或承诺异常轻松的高收入，请提高警惕，并先查询公司信息。",
+    tip2Action: "保存付款要求页面和聊天记录，然后向112报警。",
+    tip3Situation: "假房东或假中介催促支付定金，或者介绍产权和登记情况不明确的房屋。",
+    tip3Prevention: "签约前请核实房产登记、真实房主、中介资质，并亲自查看房屋。",
+    tip3Action: "保留合同、转账记录和聊天记录，并立即联系112或相关机构求助。",
+    tip4Situation: "有人在社交媒体或聊天软件中迅速建立亲密关系，然后索要金钱、礼物、投资款或机票费用。",
+    tip4Prevention: "在未见面之前，拒绝一切金钱要求，不要向身份不明的人转账。",
+    tip4Action: "保存对方资料和聊天截图，然后向112报警。",
+    tip5Situation: "如遇威胁、暴力、跟踪、诈骗嫌疑或其他紧急危险，应立即报警。",
+    tip5Prevention: "提前准备好简洁说明自己的位置、现场情况和嫌疑人特征。",
+    tip5Action: "点击本应用中的112按钮，或立即向周围人员求助。",
+    showDetails: "查看详情",
+    hideDetails: "收起",
   },
 };
 
@@ -191,16 +281,39 @@ function MenuButton({ icon, title, onClick, className = "" }) {
   );
 }
 
-function InfoCard({ title, subtitle, icon }) {
+function TipDetailCard({ title, subtitle, icon, detail, isOpen, onToggle, t }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="flex items-start gap-3">
         <div className="rounded-xl bg-slate-100 p-2">{icon}</div>
-        <div>
+        <div className="flex-1">
           <div className="font-semibold text-slate-900">{title}</div>
           <div className="mt-1 text-sm text-slate-500">{subtitle}</div>
+          <button
+            onClick={onToggle}
+            className="mt-3 rounded-xl bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700"
+          >
+            {isOpen ? t.hideDetails : t.showDetails}
+          </button>
         </div>
       </div>
+
+      {isOpen && (
+        <div className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
+          <div>
+            <div className="font-semibold text-slate-900">{t.detailLabelSituation}</div>
+            <p className="mt-1">{detail.situation}</p>
+          </div>
+          <div>
+            <div className="font-semibold text-slate-900">{t.detailLabelPrevention}</div>
+            <p className="mt-1">{detail.prevention}</p>
+          </div>
+          <div>
+            <div className="font-semibold text-slate-900">{t.detailLabelAction}</div>
+            <p className="mt-1">{detail.action}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -210,12 +323,12 @@ export default function App() {
   const [language, setLanguage] = useState("ko");
   const [coords, setCoords] = useState(null);
   const [locationError, setLocationError] = useState("");
+  const [openTip, setOpenTip] = useState(null);
 
   const t = useMemo(() => translations[language], [language]);
 
   const requestLocation = () => {
     setLocationError("");
-
     if (!navigator.geolocation) {
       setLocationError(t.locationError);
       return;
@@ -252,6 +365,64 @@ export default function App() {
     window.open(url, "_blank");
   };
 
+  const tipDetails = [
+    {
+      key: 1,
+      title: t.tip1,
+      subtitle: t.tipsSubtitle,
+      icon: <ShieldCheck size={18} />,
+      detail: {
+        situation: t.tip1Situation,
+        prevention: t.tip1Prevention,
+        action: t.tip1Action,
+      },
+    },
+    {
+      key: 2,
+      title: t.tip2,
+      subtitle: t.tipsSubtitle,
+      icon: <Building2 size={18} />,
+      detail: {
+        situation: t.tip2Situation,
+        prevention: t.tip2Prevention,
+        action: t.tip2Action,
+      },
+    },
+    {
+      key: 3,
+      title: t.tip3,
+      subtitle: t.tipsSubtitle,
+      icon: <MapPin size={18} />,
+      detail: {
+        situation: t.tip3Situation,
+        prevention: t.tip3Prevention,
+        action: t.tip3Action,
+      },
+    },
+    {
+      key: 4,
+      title: t.tip4,
+      subtitle: t.tipsSubtitle,
+      icon: <ShieldAlert size={18} />,
+      detail: {
+        situation: t.tip4Situation,
+        prevention: t.tip4Prevention,
+        action: t.tip4Action,
+      },
+    },
+    {
+      key: 5,
+      title: t.tip5,
+      subtitle: t.direct112,
+      icon: <Phone size={18} />,
+      detail: {
+        situation: t.tip5Situation,
+        prevention: t.tip5Prevention,
+        action: t.tip5Action,
+      },
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-50 to-slate-100 p-4 text-slate-900">
       <div className="mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl">
@@ -261,7 +432,6 @@ export default function App() {
               <Globe size={18} />
               <span>{t.langLabel}</span>
             </div>
-
             <div className="relative">
               <select
                 value={language}
@@ -269,11 +439,7 @@ export default function App() {
                 className="rounded-xl border border-white/30 bg-white/15 px-3 py-2 text-sm font-medium text-white outline-none backdrop-blur"
               >
                 {languageOptions.map((option) => (
-                  <option
-                    key={option.code}
-                    value={option.code}
-                    className="text-slate-900"
-                  >
+                  <option key={option.code} value={option.code} className="text-slate-900">
                     {option.label}
                   </option>
                 ))}
@@ -282,9 +448,7 @@ export default function App() {
           </div>
 
           <div className="mt-5">
-            <h1 className="text-3xl font-extrabold leading-tight">
-              {t.appTitle}
-            </h1>
+            <h1 className="text-3xl font-extrabold leading-tight">{t.appTitle}</h1>
             <p className="mt-2 text-sm text-blue-50">{t.appSubtitle}</p>
           </div>
         </div>
@@ -332,9 +496,7 @@ export default function App() {
 
               <div>
                 <h2 className="text-2xl font-bold">{t.emergencyTitle}</h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  {t.emergencyDesc}
-                </p>
+                <p className="mt-1 text-sm text-slate-500">{t.emergencyDesc}</p>
               </div>
 
               <a
@@ -375,31 +537,18 @@ export default function App() {
               </div>
 
               <div className="space-y-3">
-                <InfoCard
-                  title={t.tip1}
-                  subtitle={t.tipsSubtitle}
-                  icon={<ShieldCheck size={18} />}
-                />
-                <InfoCard
-                  title={t.tip2}
-                  subtitle={t.tipsSubtitle}
-                  icon={<Building2 size={18} />}
-                />
-                <InfoCard
-                  title={t.tip3}
-                  subtitle={t.tipsSubtitle}
-                  icon={<MapPin size={18} />}
-                />
-                <InfoCard
-                  title={t.tip4}
-                  subtitle={t.tipsSubtitle}
-                  icon={<ShieldAlert size={18} />}
-                />
-                <InfoCard
-                  title={t.tip5}
-                  subtitle={t.direct112}
-                  icon={<Phone size={18} />}
-                />
+                {tipDetails.map((tip) => (
+                  <TipDetailCard
+                    key={tip.key}
+                    title={tip.title}
+                    subtitle={tip.subtitle}
+                    icon={tip.icon}
+                    detail={tip.detail}
+                    isOpen={openTip === tip.key}
+                    onToggle={() => setOpenTip(openTip === tip.key ? null : tip.key)}
+                    t={t}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -415,9 +564,7 @@ export default function App() {
 
               <div>
                 <h2 className="text-2xl font-bold">{t.helpTitle}</h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  {t.helpSubtitle}
-                </p>
+                <p className="mt-1 text-sm text-slate-500">{t.helpSubtitle}</p>
               </div>
 
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
@@ -426,19 +573,16 @@ export default function App() {
                     <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
                       <MapPin size={16} /> Police Map Search
                     </div>
-
                     <div className="flex items-center justify-center">
                       <div className="rounded-full bg-red-500 p-4 text-white shadow-lg">
                         <MapPin size={26} />
                       </div>
                     </div>
-
                     <div className="rounded-2xl bg-white/80 p-3 text-sm text-slate-700 backdrop-blur">
                       {coords ? t.locationReady : t.locationPending}
                       {coords && (
                         <div className="mt-2 text-xs text-slate-500">
-                          LAT {coords.lat.toFixed(4)} / LNG{" "}
-                          {coords.lng.toFixed(4)}
+                          LAT {coords.lat.toFixed(4)} / LNG {coords.lng.toFixed(4)}
                         </div>
                       )}
                     </div>
@@ -469,11 +613,7 @@ export default function App() {
 
               <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
                 <p>{t.policeGuide}</p>
-                {locationError && (
-                  <p className="mt-2 font-semibold text-red-600">
-                    {locationError}
-                  </p>
-                )}
+                {locationError && <p className="mt-2 font-semibold text-red-600">{locationError}</p>}
               </div>
             </div>
           )}
