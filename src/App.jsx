@@ -14,6 +14,7 @@ import {
   CreditCard,
   Send,
   FileWarning,
+  TriangleAlert,
 } from "lucide-react";
 
 const translations = {
@@ -32,6 +33,14 @@ const translations = {
     call112: "112 신고 바로가기",
     call119: "119 신고 바로가기",
     helpNow: "긴급 도움 요청",
+    emergencyMode: "긴급모드",
+    emergencyModeTitle: "지금 바로 도움이 필요하신가요?",
+    emergencyModeDesc: "폭행, 협박, 스토킹, 성범죄, 강도, 사기 피해 직후 등 긴급 상황이면 즉시 112에 신고하세요.",
+    dangerCheckTitle: "이런 경우 즉시 112",
+    dangerCheck1: "누군가 나를 따라오거나 위협할 때",
+    dangerCheck2: "폭행, 강도, 성범죄 피해 또는 위험이 있을 때",
+    dangerCheck3: "보이스피싱·사기 피해 직후 즉시 조치가 필요할 때",
+    emergencyActionGuide: "위치를 확인하고 112 버튼을 누르세요.",
 
     tipsTitle: "범죄예방 정보",
     tipsSubtitle: "외국인 대상 주요 생활범죄 및 사기 유형을 확인하세요.",
@@ -137,6 +146,14 @@ const translations = {
     call112: "Call 112 Now",
     call119: "Call 119 Now",
     helpNow: "Request Urgent Help",
+    emergencyMode: "Emergency Mode",
+    emergencyModeTitle: "Do you need help right now?",
+    emergencyModeDesc: "If you face assault, threats, stalking, sexual violence, robbery, or immediate scam damage, call 112 now.",
+    dangerCheckTitle: "Call 112 immediately if",
+    dangerCheck1: "Someone is following or threatening you",
+    dangerCheck2: "There is assault, robbery, sexual violence, or immediate danger",
+    dangerCheck3: "You just became a victim of phishing or fraud and need urgent action",
+    emergencyActionGuide: "Check your location and press the 112 button.",
 
     tipsTitle: "Crime Prevention Info",
     tipsSubtitle:
@@ -244,6 +261,14 @@ const translations = {
     call112: "ابھی 112 پر کال کریں",
     call119: "ابھی 119 پر کال کریں",
     helpNow: "فوری مدد کی درخواست",
+    emergencyMode: "ہنگامی موڈ",
+    emergencyModeTitle: "کیا آپ کو ابھی مدد چاہیے؟",
+    emergencyModeDesc: "اگر حملہ، دھمکی، اسٹاکنگ، جنسی تشدد، ڈکیتی یا فوری دھوکہ دہی کا نقصان ہو تو فوراً 112 پر کال کریں۔",
+    dangerCheckTitle: "ان صورتوں میں فوراً 112",
+    dangerCheck1: "کوئی آپ کا پیچھا کر رہا ہو یا دھمکا رہا ہو",
+    dangerCheck2: "حملہ، ڈکیتی، جنسی جرم یا فوری خطرہ ہو",
+    dangerCheck3: "آپ ابھی ابھی فشنگ یا فراڈ کا شکار ہوئے ہوں",
+    emergencyActionGuide: "اپنی لوکیشن دیکھیں اور 112 بٹن دبائیں۔",
 
     tipsTitle: "جرم سے بچاؤ کی معلومات",
     tipsSubtitle: "غیر ملکیوں کے خلاف عام جرائم اور فراڈ کی اقسام دیکھیں۔",
@@ -350,6 +375,14 @@ const translations = {
     call112: "Позвонить 112",
     call119: "Позвонить 119",
     helpNow: "Срочно нужна помощь",
+    emergencyMode: "Экстренный режим",
+    emergencyModeTitle: "Вам нужна помощь прямо сейчас?",
+    emergencyModeDesc: "Если есть нападение, угрозы, сталкинг, сексуальное насилие, грабёж или срочный ущерб от мошенничества, немедленно звоните 112.",
+    dangerCheckTitle: "Немедленно звоните 112, если",
+    dangerCheck1: "Кто-то преследует вас или угрожает вам",
+    dangerCheck2: "Есть нападение, грабёж, сексуальное насилие или немедленная опасность",
+    dangerCheck3: "Вы только что стали жертвой фишинга или мошенничества",
+    emergencyActionGuide: "Проверьте своё местоположение и нажмите кнопку 112.",
 
     tipsTitle: "Информация по профилактике преступлений",
     tipsSubtitle:
@@ -457,6 +490,14 @@ const translations = {
     call112: "立即拨打112",
     call119: "立即拨打119",
     helpNow: "请求紧急帮助",
+    emergencyMode: "紧急模式",
+    emergencyModeTitle: "您现在需要帮助吗？",
+    emergencyModeDesc: "如遇暴力、威胁、跟踪、性犯罪、抢劫或诈骗刚发生等紧急情况，请立即拨打112。",
+    dangerCheckTitle: "以下情况请立即拨打112",
+    dangerCheck1: "有人跟踪您或威胁您",
+    dangerCheck2: "发生暴力、抢劫、性犯罪或紧急危险",
+    dangerCheck3: "您刚刚遭遇语音诈骗或其他诈骗",
+    emergencyActionGuide: "确认当前位置后，立即点击112按钮。",
 
     tipsTitle: "防犯罪信息",
     tipsSubtitle: "请查看针对外国人的常见犯罪和诈骗类型。",
@@ -814,6 +855,13 @@ export default function App() {
               />
 
               <MenuButton
+                icon={<ShieldAlert size={24} />}
+                title={t.emergencyMode}
+                onClick={() => setScreen("emergencyMode")}
+                className="bg-gradient-to-r from-rose-700 to-red-800"
+              />
+
+              <MenuButton
                 icon={<ShieldCheck size={24} />}
                 title={t.safetyTips}
                 onClick={() => setScreen("tips")}
@@ -873,6 +921,69 @@ export default function App() {
               >
                 <ShieldAlert size={20} /> {t.helpNow}
               </a>
+            </div>
+          )}
+
+          {screen === "emergencyMode" && (
+            <div className="space-y-4 rounded-3xl border border-red-200 bg-red-50 p-4">
+              <button
+                onClick={() => setScreen("home")}
+                className="flex items-center gap-1 text-sm font-medium text-red-700"
+              >
+                <ChevronLeft size={18} /> {t.back}
+              </button>
+
+              <div className="rounded-3xl bg-gradient-to-r from-red-600 to-rose-700 p-5 text-white shadow-lg">
+                <div className="flex items-center gap-3">
+                  <TriangleAlert size={28} />
+                  <div>
+                    <h2 className="text-2xl font-extrabold">{t.emergencyModeTitle}</h2>
+                    <p className="mt-2 text-sm text-red-50">{t.emergencyModeDesc}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="font-bold text-red-700">{t.dangerCheckTitle}</div>
+                <div className="mt-3 space-y-2 text-sm text-slate-700">
+                  <div className="flex gap-2"><span>•</span><span>{t.dangerCheck1}</span></div>
+                  <div className="flex gap-2"><span>•</span><span>{t.dangerCheck2}</span></div>
+                  <div className="flex gap-2"><span>•</span><span>{t.dangerCheck3}</span></div>
+                </div>
+              </div>
+
+              <button
+                onClick={requestLocation}
+                className="w-full rounded-3xl bg-slate-900 px-4 py-4 text-base font-bold text-white shadow-lg"
+              >
+                {t.useLocation}
+              </button>
+
+              <a
+                href="tel:112"
+                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-5 text-xl font-extrabold text-white shadow-lg"
+              >
+                <Phone size={22} /> {t.call112}
+              </a>
+
+              <a
+                href="tel:119"
+                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-orange-500 px-4 py-4 text-lg font-bold text-white shadow-lg"
+              >
+                <Phone size={20} /> {t.call119}
+              </a>
+
+              <div className="rounded-2xl bg-white p-4 text-sm text-slate-700 shadow-sm">
+                <p>{t.emergencyActionGuide}</p>
+                {coords && (
+                  <p className="mt-2 text-xs text-slate-500">
+                    LAT {coords.lat.toFixed(4)} / LNG {coords.lng.toFixed(4)}
+                  </p>
+                )}
+                {locationError && (
+                  <p className="mt-2 font-semibold text-red-600">{locationError}</p>
+                )}
+              </div>
             </div>
           )}
 
