@@ -74,8 +74,7 @@ export default function App() {
 
   return (
     <div style={{ maxWidth: 400, margin: "auto", padding: 20 }}>
-      
-      <select onChange={(e) => setLang(e.target.value)}>
+      <select onChange={(e) => setLang(e.target.value)} value={lang}>
         <option value="ko">한국어</option>
         <option value="en">English</option>
         <option value="ur">Urdu</option>
@@ -116,7 +115,6 @@ export default function App() {
           <a href="tel:112"><button>{t.call112}</button></a>
         </>
       )}
-
     </div>
   );
 }
