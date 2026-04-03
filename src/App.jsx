@@ -22,6 +22,8 @@ import {
 const translations = {
   ko: {
     langLabel: "언어",
+    stationLabel: "동두천경찰서",
+    officialLabel: "공식 범죄예방 안내 서비스",
     appTitle: "Global Safe Dongducheon",
     appSubtitle: "외국인·주민 대상 다국어 안전 안내 서비스",
     heroTitle: "위험하면 바로 신고하고, 도움이 필요하면 바로 찾으세요.",
@@ -147,6 +149,8 @@ const translations = {
 
   en: {
     langLabel: "Language",
+    stationLabel: "Dongducheon Police Station",
+    officialLabel: "Official Crime Prevention Service",
     appTitle: "Global Safe Dongducheon",
     appSubtitle: "Multilingual safety guide for residents and foreign nationals",
     heroTitle: "Report danger fast and find help nearby.",
@@ -272,6 +276,8 @@ const translations = {
 
   ur: {
     langLabel: "زبان",
+    stationLabel: "ڈونگڈوچیون پولیس اسٹیشن",
+    officialLabel: "سرکاری جرم سے بچاؤ کی خدمت",
     appTitle: "Global Safe Dongducheon",
     appSubtitle: "رہائشیوں اور غیر ملکیوں کے لیے کثیر لسانی حفاظتی رہنمائی",
     heroTitle: "خطرے میں فوری رپورٹ کریں اور قریب مدد تلاش کریں۔",
@@ -394,6 +400,8 @@ const translations = {
 
   ru: {
     langLabel: "Язык",
+    stationLabel: "Полицейский участок Тондучхон",
+    officialLabel: "Официальный сервис по профилактике преступлений",
     appTitle: "Global Safe Dongducheon",
     appSubtitle: "Многоязычный гид по безопасности для жителей и иностранцев",
     heroTitle: "Быстро сообщайте об опасности и находите помощь рядом.",
@@ -516,6 +524,8 @@ const translations = {
 
   zh: {
     langLabel: "语言",
+    stationLabel: "东豆川警察署",
+    officialLabel: "官方防犯罪服务",
     appTitle: "Global Safe Dongducheon",
     appSubtitle: "面向居民和外国人的多语言安全服务",
     heroTitle: "遇到危险立即报警，需要帮助立即查找。",
@@ -875,8 +885,13 @@ export default function App() {
 
       <div className="mx-auto w-full max-w-md p-4">
         <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-sky-700 p-5 text-white">
-            <div className="flex items-center justify-between gap-3">
+          <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-sky-700 p-5 text-white">
+            <div className="absolute -right-10 -top-6 opacity-10">
+              <Shield size={180} />
+            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_35%)]" />
+
+            <div className="relative z-10 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 text-sm font-medium opacity-95">
                 <Globe size={18} />
                 <span>{t.langLabel}</span>
@@ -899,12 +914,30 @@ export default function App() {
               </select>
             </div>
 
-            <div className="mt-6 rounded-[1.75rem] bg-white/10 p-5 backdrop-blur">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">
-                <Shield size={14} />
-                {t.appSubtitle}
+            <div className="relative z-10 mt-6 rounded-[1.75rem] bg-white/10 p-5 backdrop-blur">
+              <div className="flex items-center gap-4">
+                <div className="rounded-2xl bg-white/15 p-2 shadow-lg">
+                  <img
+                    src="/dongducheon-police-logo.png"
+                    alt="Dongducheon Police Station"
+                    className="h-16 w-16 rounded-xl bg-white object-contain p-1"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                </div>
+                <div>
+                  <div className="text-xs font-bold tracking-[0.2em] text-blue-100">
+                    {t.stationLabel}
+                  </div>
+                  <div className="mt-1 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">
+                    <Shield size={14} />
+                    {t.officialLabel}
+                  </div>
+                </div>
               </div>
-              <h1 className="mt-4 text-3xl font-black leading-tight">{t.appTitle}</h1>
+
+              <h1 className="mt-5 text-3xl font-black leading-tight">{t.appTitle}</h1>
               <p className="mt-3 text-lg font-bold leading-snug text-white">{t.heroTitle}</p>
               <p className="mt-2 text-sm leading-6 text-blue-50">{t.heroBody}</p>
             </div>
