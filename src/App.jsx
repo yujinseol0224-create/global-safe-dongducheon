@@ -19,6 +19,7 @@ import {
   Navigation,
   PhoneCall,
   Route,
+  MessageSquareWarning,
 } from "lucide-react";
 
 const POLICE_STATIONS = [
@@ -56,6 +57,39 @@ const POLICE_STATIONS = [
   },
 ];
 
+const reportScenarioTemplates = {
+  assault: {
+    koTitle: "폭행 신고",
+    enTitle: "Assault Report",
+    ko: "지금 폭행 피해를 입었습니다. 경찰 출동이 필요합니다.",
+    en: "I was assaulted. I need police help now.",
+  },
+  fraud: {
+    koTitle: "사기 신고",
+    enTitle: "Fraud Report",
+    ko: "사기 피해를 입었습니다. 즉시 경찰 도움이 필요합니다.",
+    en: "I became a victim of fraud. I need police help immediately.",
+  },
+  stalking: {
+    koTitle: "스토킹 신고",
+    enTitle: "Stalking Report",
+    ko: "누군가 계속 따라오고 있습니다. 보호가 필요합니다.",
+    en: "Someone is following me. I need protection.",
+  },
+  sexual: {
+    koTitle: "성범죄 신고",
+    enTitle: "Sex Crime Report",
+    ko: "성범죄 피해 또는 위험 상황입니다. 즉시 경찰 출동이 필요합니다.",
+    en: "This is a sexual crime emergency. I need police help now.",
+  },
+  threat: {
+    koTitle: "위협 · 추적 신고",
+    enTitle: "Threat / Following Report",
+    ko: "지금 위협을 받고 있거나 누군가 저를 따라오고 있습니다.",
+    en: "I am being threatened or followed right now.",
+  },
+};
+
 const translations = {
   ko: {
     langLabel: "언어",
@@ -74,6 +108,8 @@ const translations = {
     safetyTipsDescShort: "사기·생활범죄 예방",
     getHelp: "주변 경찰 찾기",
     getHelpDescShort: "지도 앱으로 바로 연결",
+    reportGuide: "신고 문장 안내",
+    reportGuideDescShort: "상황별 신고 문장 확인",
     back: "뒤로가기",
 
     stickyEmergency: "112 긴급 신고",
@@ -93,6 +129,23 @@ const translations = {
     dangerCheck2: "폭행, 강도, 성범죄 피해 또는 위험이 있을 때",
     dangerCheck3: "보이스피싱·사기 피해 직후 즉시 조치가 필요할 때",
     emergencyActionGuide: "현재 위치를 확인한 뒤 큰 112 버튼을 누르세요.",
+
+    reportTitle: "신고 상황별 문장 안내",
+    reportSubtitle:
+      "버튼을 누르면 신고할 때 바로 보여주거나 읽을 수 있는 한국어·영어 문장이 표시됩니다.",
+    reportSelectLabel: "상황 선택",
+    reportSelectedLabel: "선택된 신고 문장",
+    reportKoLabel: "한국어",
+    reportEnLabel: "English",
+    reportUseGuide:
+      "112 통화 시 아래 문장을 그대로 읽거나 화면을 보여주세요.",
+    copyHint: "문장을 길게 눌러 복사할 수 있습니다.",
+
+    scenarioAssault: "폭행",
+    scenarioFraud: "사기",
+    scenarioStalking: "스토킹",
+    scenarioSexual: "성범죄",
+    scenarioThreat: "위협·추적",
 
     tipsTitle: "범죄예방 정보",
     tipsSubtitle: "외국인 대상 주요 생활범죄 및 사기 유형을 확인하세요.",
@@ -209,6 +262,8 @@ const translations = {
     safetyTipsDescShort: "Fraud and crime prevention",
     getHelp: "Find Nearby Police",
     getHelpDescShort: "Open map app directly",
+    reportGuide: "Report Phrases",
+    reportGuideDescShort: "Situation-based help phrases",
     back: "Back",
 
     stickyEmergency: "112 Emergency",
@@ -228,6 +283,23 @@ const translations = {
     dangerCheck2: "There is assault, robbery, sexual violence, or immediate danger",
     dangerCheck3: "You just became a victim of phishing or fraud and need urgent action",
     emergencyActionGuide: "Check your location and press the large 112 button.",
+
+    reportTitle: "Situation-Based Reporting Phrases",
+    reportSubtitle:
+      "Tap a button to show Korean and English phrases you can read or show during a police call.",
+    reportSelectLabel: "Choose situation",
+    reportSelectedLabel: "Selected phrase",
+    reportKoLabel: "Korean",
+    reportEnLabel: "English",
+    reportUseGuide:
+      "During a 112 call, read the phrase below or show it on your screen.",
+    copyHint: "Long-press the sentence to copy it.",
+
+    scenarioAssault: "Assault",
+    scenarioFraud: "Fraud",
+    scenarioStalking: "Stalking",
+    scenarioSexual: "Sex Crime",
+    scenarioThreat: "Threat / Following",
 
     tipsTitle: "Crime Prevention Info",
     tipsSubtitle: "Check common daily crimes and scam types targeting foreign nationals.",
@@ -344,6 +416,8 @@ const translations = {
     safetyTipsDescShort: "فراڈ اور جرم سے بچاؤ",
     getHelp: "قریبی پولیس تلاش کریں",
     getHelpDescShort: "نقشہ ایپ فوراً کھولیں",
+    reportGuide: "رپورٹ جملے",
+    reportGuideDescShort: "صورتحال کے مطابق جملے",
     back: "واپس",
 
     stickyEmergency: "112 ہنگامی کال",
@@ -362,6 +436,22 @@ const translations = {
     dangerCheck2: "حملہ، ڈکیتی، جنسی جرم یا فوری خطرہ ہو",
     dangerCheck3: "آپ ابھی ابھی فشنگ یا فراڈ کا شکار ہوئے ہوں",
     emergencyActionGuide: "اپنی لوکیشن دیکھیں اور بڑا 112 بٹن دبائیں۔",
+
+    reportTitle: "صورتحال کے مطابق رپورٹ جملے",
+    reportSubtitle:
+      "بٹن دبانے سے کوریائی اور انگریزی جملے دکھائے جائیں گے جو آپ کال میں پڑھ سکتے ہیں یا اسکرین پر دکھا سکتے ہیں۔",
+    reportSelectLabel: "صورتحال منتخب کریں",
+    reportSelectedLabel: "منتخب جملہ",
+    reportKoLabel: "کوریائی",
+    reportEnLabel: "English",
+    reportUseGuide: "112 کال کے دوران نیچے والا جملہ پڑھیں یا اسکرین دکھائیں۔",
+    copyHint: "جملہ کاپی کرنے کے لیے دیر تک دبائیں۔",
+
+    scenarioAssault: "حملہ",
+    scenarioFraud: "فراڈ",
+    scenarioStalking: "اسٹاکنگ",
+    scenarioSexual: "جنسی جرم",
+    scenarioThreat: "دھمکی / پیچھا",
 
     tipsTitle: "جرم سے بچاؤ کی معلومات",
     tipsSubtitle: "غیر ملکیوں کے خلاف عام جرائم اور فراڈ کی اقسام دیکھیں۔",
@@ -476,6 +566,8 @@ const translations = {
     safetyTipsDescShort: "Профилактика преступлений и мошенничества",
     getHelp: "Найти полицию рядом",
     getHelpDescShort: "Сразу открыть карту",
+    reportGuide: "Фразы для сообщения",
+    reportGuideDescShort: "Фразы по ситуации",
     back: "Назад",
 
     stickyEmergency: "112 Экстренно",
@@ -494,6 +586,23 @@ const translations = {
     dangerCheck2: "Есть нападение, грабёж, сексуальное насилие или немедленная опасность",
     dangerCheck3: "Вы только что стали жертвой фишинга или мошенничества",
     emergencyActionGuide: "Проверьте своё местоположение и нажмите большую кнопку 112.",
+
+    reportTitle: "Фразы для сообщения по ситуации",
+    reportSubtitle:
+      "Нажмите кнопку, чтобы показать корейские и английские фразы, которые можно прочитать или показать во время звонка в полицию.",
+    reportSelectLabel: "Выберите ситуацию",
+    reportSelectedLabel: "Выбранная фраза",
+    reportKoLabel: "Корейский",
+    reportEnLabel: "English",
+    reportUseGuide:
+      "Во время звонка 112 прочитайте фразу ниже или покажите её на экране.",
+    copyHint: "Нажмите и удерживайте, чтобы скопировать предложение.",
+
+    scenarioAssault: "Нападение",
+    scenarioFraud: "Мошенничество",
+    scenarioStalking: "Сталкинг",
+    scenarioSexual: "Сексуальное преступление",
+    scenarioThreat: "Угроза / Преследование",
 
     tipsTitle: "Информация по профилактике преступлений",
     tipsSubtitle: "Проверьте распространённые преступления и мошенничество против иностранцев.",
@@ -608,6 +717,8 @@ const translations = {
     safetyTipsDescShort: "预防诈骗和犯罪",
     getHelp: "查找附近警察",
     getHelpDescShort: "直接打开地图应用",
+    reportGuide: "报警用语",
+    reportGuideDescShort: "按情况查看句子",
     back: "返回",
 
     stickyEmergency: "112紧急报警",
@@ -626,6 +737,22 @@ const translations = {
     dangerCheck2: "发生暴力、抢劫、性犯罪或紧急危险",
     dangerCheck3: "您刚刚遭遇语音诈骗或其他诈骗",
     emergencyActionGuide: "确认当前位置后，点击大的112按钮。",
+
+    reportTitle: "按情况分类的报警句子",
+    reportSubtitle:
+      "点击按钮后，可显示报警时可直接阅读或出示的韩语和英语句子。",
+    reportSelectLabel: "选择情况",
+    reportSelectedLabel: "已选句子",
+    reportKoLabel: "韩语",
+    reportEnLabel: "English",
+    reportUseGuide: "拨打112时，请直接朗读下面的句子或出示屏幕。",
+    copyHint: "长按句子可复制。",
+
+    scenarioAssault: "暴力",
+    scenarioFraud: "诈骗",
+    scenarioStalking: "跟踪",
+    scenarioSexual: "性犯罪",
+    scenarioThreat: "威胁 / 跟随",
 
     tipsTitle: "防犯罪信息",
     tipsSubtitle: "请查看针对外国人的常见犯罪和诈骗类型。",
@@ -836,7 +963,7 @@ function NearestPoliceCard({ station, t }) {
 
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${station.name} ${station.type}`
-  )}&query_place_id=`;
+  )}`;
   const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lng}`;
 
   return (
@@ -892,12 +1019,28 @@ function NearestPoliceCard({ station, t }) {
   );
 }
 
+function ReportScenarioCard({ title, onClick, isActive }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`rounded-2xl border px-4 py-3 text-left text-sm font-bold shadow-sm transition ${
+        isActive
+          ? "border-red-500 bg-red-50 text-red-700"
+          : "border-slate-200 bg-white text-slate-800"
+      }`}
+    >
+      {title}
+    </button>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState("home");
   const [language, setLanguage] = useState("ko");
   const [coords, setCoords] = useState(null);
   const [locationError, setLocationError] = useState("");
   const [openTip, setOpenTip] = useState(null);
+  const [selectedScenario, setSelectedScenario] = useState("assault");
 
   const t = useMemo(() => translations[language], [language]);
 
@@ -1043,6 +1186,16 @@ export default function App() {
     },
   ];
 
+  const scenarioButtons = [
+    { key: "assault", label: t.scenarioAssault },
+    { key: "fraud", label: t.scenarioFraud },
+    { key: "stalking", label: t.scenarioStalking },
+    { key: "sexual", label: t.scenarioSexual },
+    { key: "threat", label: t.scenarioThreat },
+  ];
+
+  const selectedReport = reportScenarioTemplates[selectedScenario];
+
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
       <div className="sticky top-0 z-50 border-b border-red-300 bg-red-600 px-4 py-3 shadow-lg">
@@ -1083,11 +1236,7 @@ export default function App() {
                 className="rounded-xl border border-white/40 bg-white/15 px-3 py-2 text-sm font-medium text-white outline-none backdrop-blur"
               >
                 {languageOptions.map((option) => (
-                  <option
-                    key={option.code}
-                    value={option.code}
-                    className="text-slate-900"
-                  >
+                  <option key={option.code} value={option.code} className="text-slate-900">
                     {option.label}
                   </option>
                 ))}
@@ -1140,6 +1289,14 @@ export default function App() {
                   desc={t.emergencyModeDescShort}
                   onClick={() => setScreen("emergencyMode")}
                   className="bg-gradient-to-r from-slate-900 to-red-800"
+                />
+
+                <MainActionCard
+                  icon={<MessageSquareWarning size={26} />}
+                  title={t.reportGuide}
+                  desc={t.reportGuideDescShort}
+                  onClick={() => setScreen("reportGuide")}
+                  className="bg-gradient-to-r from-violet-700 to-indigo-700"
                 />
 
                 <MainActionCard
@@ -1269,6 +1426,66 @@ export default function App() {
                     <p className="mt-2 font-semibold text-yellow-200">{locationError}</p>
                   )}
                 </div>
+              </div>
+            )}
+
+            {screen === "reportGuide" && (
+              <div className="space-y-4">
+                <button
+                  onClick={() => setScreen("home")}
+                  className="flex items-center gap-1 text-sm font-medium text-slate-500"
+                >
+                  <ChevronLeft size={18} /> {t.back}
+                </button>
+
+                <div className="rounded-3xl border border-violet-200 bg-violet-50 p-5">
+                  <h2 className="text-2xl font-black text-slate-900">{t.reportTitle}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{t.reportSubtitle}</p>
+                </div>
+
+                <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <div className="font-black text-slate-900">{t.reportSelectLabel}</div>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    {scenarioButtons.map((item) => (
+                      <ReportScenarioCard
+                        key={item.key}
+                        title={item.label}
+                        isActive={selectedScenario === item.key}
+                        onClick={() => setSelectedScenario(item.key)}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <div className="font-black text-slate-900">{t.reportSelectedLabel}</div>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{t.reportUseGuide}</p>
+
+                  <div className="mt-4 space-y-4">
+                    <div className="rounded-2xl bg-slate-50 p-4">
+                      <div className="text-sm font-black text-slate-900">{t.reportKoLabel}</div>
+                      <p className="mt-2 text-base leading-7 text-slate-800 select-all">
+                        {selectedReport.ko}
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl bg-slate-50 p-4">
+                      <div className="text-sm font-black text-slate-900">{t.reportEnLabel}</div>
+                      <p className="mt-2 text-base leading-7 text-slate-800 select-all">
+                        {selectedReport.en}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="mt-4 text-xs text-slate-500">{t.copyHint}</p>
+                </div>
+
+                <a
+                  href="tel:112"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-4 text-base font-extrabold text-white shadow-lg"
+                >
+                  <Phone size={18} /> {t.call112}
+                </a>
               </div>
             )}
 
