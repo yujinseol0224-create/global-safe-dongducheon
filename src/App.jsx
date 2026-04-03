@@ -17,7 +17,44 @@ import {
   TriangleAlert,
   Shield,
   Navigation,
+  PhoneCall,
+  Route,
 } from "lucide-react";
+
+const POLICE_STATIONS = [
+  {
+    id: "dongducheon-main",
+    name: "동두천경찰서",
+    phone: "031-860-0112",
+    lat: 37.9036,
+    lng: 127.0606,
+    type: "경찰서",
+  },
+  {
+    id: "jihaeng",
+    name: "지행파출소",
+    phone: "031-860-0345",
+    lat: 37.8924,
+    lng: 127.0553,
+    type: "파출소",
+  },
+  {
+    id: "bosan",
+    name: "보산파출소",
+    phone: "031-860-0346",
+    lat: 37.9142,
+    lng: 127.0588,
+    type: "파출소",
+  },
+  {
+    id: "soyosan",
+    name: "소요파출소",
+    phone: "031-860-0347",
+    lat: 37.9464,
+    lng: 127.0668,
+    type: "파출소",
+  },
+];
 
 const translations = {
   ko: {
@@ -145,6 +182,14 @@ const translations = {
     footer: "동두천경찰서 범죄예방 안내용 시범 웹앱",
     mapSearchLabel: "주변 경찰관서 지도 검색",
     locationNote: "버튼을 누르면 지도 앱이 열립니다.",
+
+    nearestTitle: "가장 가까운 경찰관서",
+    nearestDesc: "현재 위치 기준으로 가장 가까운 경찰관서를 안내합니다.",
+    nearestUnknown: "위치를 확인하면 가장 가까운 경찰관서를 표시합니다.",
+    distanceLabel: "거리",
+    phoneButton: "전화하기",
+    routeButton: "길찾기",
+    openMapButton: "지도에서 보기",
   },
 
   en: {
@@ -272,6 +317,14 @@ const translations = {
     footer: "Pilot safety web app by Dongducheon Police",
     mapSearchLabel: "Nearby Police Map Search",
     locationNote: "The button opens your map app.",
+
+    nearestTitle: "Nearest Police Office",
+    nearestDesc: "We show the nearest police office based on your current location.",
+    nearestUnknown: "Check your location to see the nearest police office.",
+    distanceLabel: "Distance",
+    phoneButton: "Call",
+    routeButton: "Directions",
+    openMapButton: "View on Map",
   },
 
   ur: {
@@ -396,6 +449,14 @@ const translations = {
     footer: "ڈونگڈوچیون پولیس کی آزمائشی حفاظتی ویب ایپ",
     mapSearchLabel: "قریبی پولیس نقشہ تلاش",
     locationNote: "بٹن دبانے سے نقشہ ایپ کھلتی ہے۔",
+
+    nearestTitle: "سب سے قریب پولیس دفتر",
+    nearestDesc: "آپ کی موجودہ جگہ کے مطابق قریب ترین پولیس دفتر دکھایا جاتا ہے۔",
+    nearestUnknown: "قریب ترین پولیس دفتر دیکھنے کے لیے لوکیشن چیک کریں۔",
+    distanceLabel: "فاصلہ",
+    phoneButton: "کال کریں",
+    routeButton: "راستہ دیکھیں",
+    openMapButton: "نقشہ پر دیکھیں",
   },
 
   ru: {
@@ -520,6 +581,14 @@ const translations = {
     footer: "Пилотное веб-приложение Dongducheon Police",
     mapSearchLabel: "Поиск полиции рядом на карте",
     locationNote: "Кнопка открывает карту.",
+
+    nearestTitle: "Ближайший полицейский участок",
+    nearestDesc: "Показываем ближайшее полицейское отделение на основе вашего текущего местоположения.",
+    nearestUnknown: "Проверьте местоположение, чтобы увидеть ближайший участок.",
+    distanceLabel: "Расстояние",
+    phoneButton: "Позвонить",
+    routeButton: "Маршрут",
+    openMapButton: "Открыть на карте",
   },
 
   zh: {
@@ -644,6 +713,14 @@ const translations = {
     footer: "东豆川警察署试点安全网页应用",
     mapSearchLabel: "附近警察地图搜索",
     locationNote: "按钮会打开地图应用。",
+
+    nearestTitle: "最近的警察机关",
+    nearestDesc: "根据您的当前位置显示最近的警察机关。",
+    nearestUnknown: "确认位置后可查看最近的警察机关。",
+    distanceLabel: "距离",
+    phoneButton: "拨打电话",
+    routeButton: "路线",
+    openMapButton: "地图查看",
   },
 };
 
@@ -654,6 +731,29 @@ const languageOptions = [
   { code: "ru", label: "Русский" },
   { code: "zh", label: "中文" },
 ];
+
+function haversineDistance(lat1, lng1, lat2, lng2) {
+  const toRad = (value) => (value * Math.PI) / 180;
+  const R = 6371;
+
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+function formatDistance(km) {
+  if (km < 1) return `${Math.round(km * 1000)}m`;
+  return `${km.toFixed(1)}km`;
+}
 
 function MainActionCard({ icon, title, desc, onClick, className = "" }) {
   return (
@@ -724,6 +824,74 @@ function TipDetailCard({ title, subtitle, icon, detail, isOpen, onToggle, t }) {
   );
 }
 
+function NearestPoliceCard({ station, t }) {
+  if (!station) {
+    return (
+      <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="font-black text-slate-900">{t.nearestTitle}</div>
+        <p className="mt-2 text-sm leading-6 text-slate-600">{t.nearestUnknown}</p>
+      </div>
+    );
+  }
+
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${station.name} ${station.type}`
+  )}&query_place_id=`;
+  const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lng}`;
+
+  return (
+    <div className="rounded-3xl border border-blue-200 bg-blue-50 p-4 shadow-sm">
+      <div className="font-black text-slate-900">{t.nearestTitle}</div>
+      <p className="mt-1 text-sm leading-6 text-slate-600">{t.nearestDesc}</p>
+
+      <div className="mt-4 rounded-2xl bg-white p-4 shadow-sm">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <div className="text-lg font-extrabold text-slate-900">{station.name}</div>
+            <div className="mt-1 text-sm text-slate-500">{station.type}</div>
+            <div className="mt-2 text-sm font-semibold text-blue-700">
+              {t.distanceLabel}: {formatDistance(station.distanceKm)}
+            </div>
+          </div>
+          <div className="rounded-2xl bg-blue-100 p-3 text-blue-700">
+            <MapPin size={22} />
+          </div>
+        </div>
+
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <a
+            href={`tel:${station.phone}`}
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-red-600 px-4 py-3 text-sm font-extrabold text-white shadow"
+          >
+            <PhoneCall size={16} />
+            {t.phoneButton}
+          </a>
+
+          <a
+            href={routeUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-extrabold text-white shadow"
+          >
+            <Route size={16} />
+            {t.routeButton}
+          </a>
+        </div>
+
+        <a
+          href={mapUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-extrabold text-white shadow"
+        >
+          <Navigation size={16} />
+          {t.openMapButton}
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [screen, setScreen] = useState("home");
   const [language, setLanguage] = useState("ko");
@@ -732,6 +900,18 @@ export default function App() {
   const [openTip, setOpenTip] = useState(null);
 
   const t = useMemo(() => translations[language], [language]);
+
+  const nearestStation = useMemo(() => {
+    if (!coords) return null;
+
+    const enriched = POLICE_STATIONS.map((station) => ({
+      ...station,
+      distanceKm: haversineDistance(coords.lat, coords.lng, station.lat, station.lng),
+    }));
+
+    enriched.sort((a, b) => a.distanceKm - b.distanceKm);
+    return enriched[0];
+  }, [coords]);
 
   const requestLocation = () => {
     setLocationError("");
@@ -978,6 +1158,8 @@ export default function App() {
                   className="bg-gradient-to-r from-emerald-600 to-green-600"
                 />
 
+                <NearestPoliceCard station={nearestStation} t={t} />
+
                 <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
                   <div className="flex items-center gap-2 font-bold text-slate-900">
                     <Languages size={16} />
@@ -1134,6 +1316,8 @@ export default function App() {
                   <h2 className="text-2xl font-black text-slate-900">{t.helpTitle}</h2>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{t.helpSubtitle}</p>
                 </div>
+
+                <NearestPoliceCard station={nearestStation} t={t} />
 
                 <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
                   <div className="aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-slate-200 via-slate-100 to-sky-100 p-4">
