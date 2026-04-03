@@ -15,32 +15,45 @@ import {
   Send,
   FileWarning,
   TriangleAlert,
+  Shield,
+  Navigation,
 } from "lucide-react";
 
 const translations = {
   ko: {
     langLabel: "언어",
     appTitle: "Global Safe Dongducheon",
-    appSubtitle: "다국어 안전 안내 서비스",
+    appSubtitle: "외국인·주민 대상 다국어 안전 안내 서비스",
+    heroTitle: "위험하면 바로 신고하고, 도움이 필요하면 바로 찾으세요.",
+    heroBody: "긴급 신고, 범죄예방 정보, 주변 경찰관서 찾기를 한 번에 이용할 수 있습니다.",
 
-    emergency: "긴급 상황",
+    emergency: "긴급 신고",
+    emergencyDescShort: "112·119 바로 연결",
+    emergencyMode: "긴급모드",
+    emergencyModeDescShort: "위험 상황 즉시 대응",
     safetyTips: "예방 정보",
-    getHelp: "도움 요청",
+    safetyTipsDescShort: "사기·생활범죄 예방",
+    getHelp: "주변 경찰 찾기",
+    getHelpDescShort: "지도 앱으로 바로 연결",
     back: "뒤로가기",
+
+    stickyEmergency: "112 긴급 신고",
+    stickyEmergencySub: "위험 시 즉시 연결",
 
     emergencyTitle: "긴급 신고",
     emergencyDesc: "위급한 상황에서는 아래 버튼을 눌러 바로 신고하세요.",
     call112: "112 신고 바로가기",
     call119: "119 신고 바로가기",
-    helpNow: "긴급 도움 요청",
-    emergencyMode: "긴급모드",
+    helpNow: "지금 바로 도움 요청",
+
     emergencyModeTitle: "지금 바로 도움이 필요하신가요?",
-    emergencyModeDesc: "폭행, 협박, 스토킹, 성범죄, 강도, 사기 피해 직후 등 긴급 상황이면 즉시 112에 신고하세요.",
+    emergencyModeDesc:
+      "폭행, 협박, 스토킹, 성범죄, 강도, 사기 피해 직후 등 긴급 상황이면 즉시 112에 신고하세요.",
     dangerCheckTitle: "이런 경우 즉시 112",
     dangerCheck1: "누군가 나를 따라오거나 위협할 때",
     dangerCheck2: "폭행, 강도, 성범죄 피해 또는 위험이 있을 때",
     dangerCheck3: "보이스피싱·사기 피해 직후 즉시 조치가 필요할 때",
-    emergencyActionGuide: "위치를 확인하고 112 버튼을 누르세요.",
+    emergencyActionGuide: "현재 위치를 확인한 뒤 큰 112 버튼을 누르세요.",
 
     tipsTitle: "범죄예방 정보",
     tipsSubtitle: "외국인 대상 주요 생활범죄 및 사기 유형을 확인하세요.",
@@ -116,48 +129,59 @@ const translations = {
     tip8Action:
       "서류, 대화기록, 송금내역을 보관하고 즉시 112 또는 관련 기관에 신고하세요.",
 
-    helpTitle: "가까운 경찰관서 찾기",
+    helpTitle: "주변 경찰관서 찾기",
     helpSubtitle:
-      "내 위치를 기준으로 근처 경찰서·지구대·파출소를 찾을 수 있습니다.",
-    useLocation: "내 위치 사용",
+      "현재 위치를 기준으로 근처 경찰서·지구대·파출소를 지도 앱에서 찾을 수 있습니다.",
+    useLocation: "내 위치 확인",
     locationReady: "현재 위치가 확인되었습니다.",
-    locationPending: "위치 정보를 확인하면 주변 경찰관서 검색 버튼이 활성화됩니다.",
-    openNearbyPolice: "근처 경찰관서 보기",
+    locationPending: "위치 정보를 확인하면 주변 경찰관서 검색이 더 정확해집니다.",
+    openNearbyPolice: "내 주변 경찰서 찾기 (지도 열림)",
     locationError: "위치 확인에 실패했습니다. 브라우저 위치 권한을 확인해주세요.",
     policeGuide:
       "버튼을 누르면 지도 앱에서 내 주변 경찰서·지구대·파출소를 바로 검색합니다.",
     direct112: "상담 요청 대신 112 바로 연결",
-    footer: "외국인·주민 대상 안전 안내용 시범 웹앱",
-    mapSearchLabel: "경찰관서 지도 검색",
+    footer: "동두천경찰서 범죄예방 안내용 시범 웹앱",
+    mapSearchLabel: "주변 경찰관서 지도 검색",
+    locationNote: "버튼을 누르면 지도 앱이 열립니다.",
   },
 
   en: {
     langLabel: "Language",
     appTitle: "Global Safe Dongducheon",
-    appSubtitle: "Multilingual Safety Guide",
+    appSubtitle: "Multilingual safety guide for residents and foreign nationals",
+    heroTitle: "Report danger fast and find help nearby.",
+    heroBody: "Use emergency calls, crime prevention info, and nearby police search in one place.",
 
-    emergency: "Emergency",
+    emergency: "Emergency Call",
+    emergencyDescShort: "Direct 112 / 119 call",
+    emergencyMode: "Emergency Mode",
+    emergencyModeDescShort: "Immediate danger response",
     safetyTips: "Safety Tips",
-    getHelp: "Get Help",
+    safetyTipsDescShort: "Fraud and crime prevention",
+    getHelp: "Find Nearby Police",
+    getHelpDescShort: "Open map app directly",
     back: "Back",
+
+    stickyEmergency: "112 Emergency",
+    stickyEmergencySub: "Connect immediately if in danger",
 
     emergencyTitle: "Emergency Call",
     emergencyDesc: "In an emergency, tap a button below to call immediately.",
     call112: "Call 112 Now",
     call119: "Call 119 Now",
-    helpNow: "Request Urgent Help",
-    emergencyMode: "Emergency Mode",
+    helpNow: "Get Help Now",
+
     emergencyModeTitle: "Do you need help right now?",
-    emergencyModeDesc: "If you face assault, threats, stalking, sexual violence, robbery, or immediate scam damage, call 112 now.",
+    emergencyModeDesc:
+      "If you face assault, threats, stalking, sexual violence, robbery, or immediate scam damage, call 112 now.",
     dangerCheckTitle: "Call 112 immediately if",
     dangerCheck1: "Someone is following or threatening you",
     dangerCheck2: "There is assault, robbery, sexual violence, or immediate danger",
     dangerCheck3: "You just became a victim of phishing or fraud and need urgent action",
-    emergencyActionGuide: "Check your location and press the 112 button.",
+    emergencyActionGuide: "Check your location and press the large 112 button.",
 
     tipsTitle: "Crime Prevention Info",
-    tipsSubtitle:
-      "Check common daily crimes and scam types targeting foreign nationals.",
+    tipsSubtitle: "Check common daily crimes and scam types targeting foreign nationals.",
 
     tip1: "Voice Phishing",
     tip2: "Job Scam",
@@ -232,43 +256,53 @@ const translations = {
 
     helpTitle: "Find Nearby Police Office",
     helpSubtitle:
-      "Use your location to find the nearest police station, precinct, or substation.",
-    useLocation: "Use My Location",
+      "Use your location to find the nearest police station, precinct, or substation in your map app.",
+    useLocation: "Check My Location",
     locationReady: "Your location has been confirmed.",
-    locationPending:
-      "Nearby police search will be enabled after location access is granted.",
-    openNearbyPolice: "Find Nearby Police Offices",
+    locationPending: "Nearby police search becomes more accurate after location access is granted.",
+    openNearbyPolice: "Find Nearby Police (Open Map)",
     locationError: "Location access failed. Please check your browser permissions.",
     policeGuide:
       "This opens your map app and searches nearby police stations, precincts, and substations around your location.",
     direct112: "Direct 112 connection instead of a form",
-    footer: "Pilot safety web app for residents and foreign nationals",
-    mapSearchLabel: "Police Map Search",
+    footer: "Pilot safety web app by Dongducheon Police",
+    mapSearchLabel: "Nearby Police Map Search",
+    locationNote: "The button opens your map app.",
   },
 
   ur: {
     langLabel: "زبان",
     appTitle: "Global Safe Dongducheon",
-    appSubtitle: "کثیر لسانی حفاظتی رہنمائی",
+    appSubtitle: "رہائشیوں اور غیر ملکیوں کے لیے کثیر لسانی حفاظتی رہنمائی",
+    heroTitle: "خطرے میں فوری رپورٹ کریں اور قریب مدد تلاش کریں۔",
+    heroBody: "ہنگامی کال، جرم سے بچاؤ کی معلومات اور قریبی پولیس تلاش ایک ہی جگہ پر۔",
 
-    emergency: "ہنگامی صورتحال",
+    emergency: "ہنگامی کال",
+    emergencyDescShort: "112 / 119 براہ راست کال",
+    emergencyMode: "ہنگامی موڈ",
+    emergencyModeDescShort: "فوری خطرے میں فوری ردعمل",
     safetyTips: "حفاظتی معلومات",
-    getHelp: "مدد حاصل کریں",
+    safetyTipsDescShort: "فراڈ اور جرم سے بچاؤ",
+    getHelp: "قریبی پولیس تلاش کریں",
+    getHelpDescShort: "نقشہ ایپ فوراً کھولیں",
     back: "واپس",
+
+    stickyEmergency: "112 ہنگامی کال",
+    stickyEmergencySub: "خطرے میں فوراً رابطہ",
 
     emergencyTitle: "ہنگامی کال",
     emergencyDesc: "ہنگامی صورتحال میں فوراً کال کرنے کے لیے نیچے بٹن دبائیں۔",
     call112: "ابھی 112 پر کال کریں",
     call119: "ابھی 119 پر کال کریں",
-    helpNow: "فوری مدد کی درخواست",
-    emergencyMode: "ہنگامی موڈ",
+    helpNow: "ابھی مدد حاصل کریں",
+
     emergencyModeTitle: "کیا آپ کو ابھی مدد چاہیے؟",
     emergencyModeDesc: "اگر حملہ، دھمکی، اسٹاکنگ، جنسی تشدد، ڈکیتی یا فوری دھوکہ دہی کا نقصان ہو تو فوراً 112 پر کال کریں۔",
     dangerCheckTitle: "ان صورتوں میں فوراً 112",
     dangerCheck1: "کوئی آپ کا پیچھا کر رہا ہو یا دھمکا رہا ہو",
     dangerCheck2: "حملہ، ڈکیتی، جنسی جرم یا فوری خطرہ ہو",
     dangerCheck3: "آپ ابھی ابھی فشنگ یا فراڈ کا شکار ہوئے ہوں",
-    emergencyActionGuide: "اپنی لوکیشن دیکھیں اور 112 بٹن دبائیں۔",
+    emergencyActionGuide: "اپنی لوکیشن دیکھیں اور بڑا 112 بٹن دبائیں۔",
 
     tipsTitle: "جرم سے بچاؤ کی معلومات",
     tipsSubtitle: "غیر ملکیوں کے خلاف عام جرائم اور فراڈ کی اقسام دیکھیں۔",
@@ -345,48 +379,55 @@ const translations = {
       "دستاویزات، چیٹ اور ٹرانسفر ریکارڈ محفوظ کریں، پھر 112 یا متعلقہ دفتر سے فوراً رابطہ کریں۔",
 
     helpTitle: "قریبی پولیس دفتر تلاش کریں",
-    helpSubtitle:
-      "اپنی موجودہ جگہ کے قریب پولیس اسٹیشن، چوکی یا دفتر تلاش کریں۔",
-    useLocation: "میری لوکیشن استعمال کریں",
+    helpSubtitle: "اپنی موجودہ جگہ کے قریب پولیس اسٹیشن، چوکی یا دفتر نقشہ ایپ میں تلاش کریں۔",
+    useLocation: "میری لوکیشن چیک کریں",
     locationReady: "آپ کی موجودہ جگہ کی تصدیق ہو گئی ہے۔",
-    locationPending:
-      "لوکیشن کی اجازت ملنے کے بعد قریبی پولیس دفاتر کی تلاش فعال ہوگی۔",
-    openNearbyPolice: "قریبی پولیس دفاتر دیکھیں",
+    locationPending: "لوکیشن کی اجازت ملنے کے بعد تلاش زیادہ درست ہو جائے گی۔",
+    openNearbyPolice: "قریبی پولیس تلاش کریں (نقشہ کھلے گا)",
     locationError: "لوکیشن حاصل نہیں ہو سکی۔ براہ کرم براؤزر کی اجازت چیک کریں۔",
-    policeGuide:
-      "یہ آپ کی نقشہ ایپ کھول کر آپ کے قریب پولیس اسٹیشن اور چوکی تلاش کرے گا۔",
+    policeGuide: "یہ آپ کی نقشہ ایپ کھول کر آپ کے قریب پولیس اسٹیشن اور چوکی تلاش کرے گا۔",
     direct112: "فارم کے بجائے براہ راست 112 کال",
-    footer: "رہائشیوں اور غیر ملکیوں کے لیے آزمائشی حفاظتی ویب ایپ",
-    mapSearchLabel: "پولیس نقشہ تلاش",
+    footer: "ڈونگڈوچیون پولیس کی آزمائشی حفاظتی ویب ایپ",
+    mapSearchLabel: "قریبی پولیس نقشہ تلاش",
+    locationNote: "بٹن دبانے سے نقشہ ایپ کھلتی ہے۔",
   },
 
   ru: {
     langLabel: "Язык",
     appTitle: "Global Safe Dongducheon",
-    appSubtitle: "Многоязычный гид по безопасности",
+    appSubtitle: "Многоязычный гид по безопасности для жителей и иностранцев",
+    heroTitle: "Быстро сообщайте об опасности и находите помощь рядом.",
+    heroBody: "Экстренный вызов, информация по безопасности и поиск ближайшей полиции — в одном месте.",
 
-    emergency: "Экстренная ситуация",
+    emergency: "Экстренный вызов",
+    emergencyDescShort: "Прямой звонок 112 / 119",
+    emergencyMode: "Экстренный режим",
+    emergencyModeDescShort: "Реакция при немедленной опасности",
     safetyTips: "Советы по безопасности",
-    getHelp: "Получить помощь",
+    safetyTipsDescShort: "Профилактика преступлений и мошенничества",
+    getHelp: "Найти полицию рядом",
+    getHelpDescShort: "Сразу открыть карту",
     back: "Назад",
+
+    stickyEmergency: "112 Экстренно",
+    stickyEmergencySub: "Немедленное соединение при опасности",
 
     emergencyTitle: "Экстренный вызов",
     emergencyDesc: "В экстренной ситуации нажмите кнопку ниже для немедленного звонка.",
     call112: "Позвонить 112",
     call119: "Позвонить 119",
-    helpNow: "Срочно нужна помощь",
-    emergencyMode: "Экстренный режим",
+    helpNow: "Нужна помощь сейчас",
+
     emergencyModeTitle: "Вам нужна помощь прямо сейчас?",
     emergencyModeDesc: "Если есть нападение, угрозы, сталкинг, сексуальное насилие, грабёж или срочный ущерб от мошенничества, немедленно звоните 112.",
     dangerCheckTitle: "Немедленно звоните 112, если",
     dangerCheck1: "Кто-то преследует вас или угрожает вам",
     dangerCheck2: "Есть нападение, грабёж, сексуальное насилие или немедленная опасность",
     dangerCheck3: "Вы только что стали жертвой фишинга или мошенничества",
-    emergencyActionGuide: "Проверьте своё местоположение и нажмите кнопку 112.",
+    emergencyActionGuide: "Проверьте своё местоположение и нажмите большую кнопку 112.",
 
     tipsTitle: "Информация по профилактике преступлений",
-    tipsSubtitle:
-      "Проверьте распространённые преступления и мошенничество против иностранцев.",
+    tipsSubtitle: "Проверьте распространённые преступления и мошенничество против иностранцев.",
 
     tip1: "Голосовой фишинг",
     tip2: "Мошенничество с работой",
@@ -459,45 +500,53 @@ const translations = {
     tip8Action:
       "Сохраните документы, переписку и переводы, затем сразу обратитесь в 112 или профильное ведомство.",
 
-    helpTitle: "Найти ближайший полицейский участок",
-    helpSubtitle:
-      "Используйте своё местоположение, чтобы найти ближайший участок, отделение или пост полиции.",
-    useLocation: "Использовать моё местоположение",
+    helpTitle: "Найти полицию рядом",
+    helpSubtitle: "Используйте своё местоположение, чтобы найти ближайший участок, отделение или пост полиции на карте.",
+    useLocation: "Проверить моё местоположение",
     locationReady: "Ваше местоположение подтверждено.",
-    locationPending:
-      "Поиск ближайшей полиции станет доступен после разрешения на доступ к геолокации.",
-    openNearbyPolice: "Показать ближайшие отделения полиции",
+    locationPending: "Поиск станет точнее после разрешения на доступ к геолокации.",
+    openNearbyPolice: "Найти полицию рядом (Открыть карту)",
     locationError: "Не удалось получить местоположение. Проверьте разрешения браузера.",
-    policeGuide:
-      "Кнопка откроет карту и выполнит поиск ближайших полицейских участков рядом с вами.",
+    policeGuide: "Кнопка откроет карту и выполнит поиск ближайших полицейских участков рядом с вами.",
     direct112: "Прямое соединение с 112 вместо формы",
-    footer: "Пилотное веб-приложение по безопасности для жителей и иностранцев",
-    mapSearchLabel: "Поиск полиции на карте",
+    footer: "Пилотное веб-приложение Dongducheon Police",
+    mapSearchLabel: "Поиск полиции рядом на карте",
+    locationNote: "Кнопка открывает карту.",
   },
 
   zh: {
     langLabel: "语言",
     appTitle: "Global Safe Dongducheon",
-    appSubtitle: "多语言安全指引服务",
+    appSubtitle: "面向居民和外国人的多语言安全服务",
+    heroTitle: "遇到危险立即报警，需要帮助立即查找。",
+    heroBody: "紧急报警、防犯罪信息、附近警察机关搜索，一次完成。",
 
-    emergency: "紧急情况",
+    emergency: "紧急报警",
+    emergencyDescShort: "直接拨打112 / 119",
+    emergencyMode: "紧急模式",
+    emergencyModeDescShort: "危险时立即应对",
     safetyTips: "预防信息",
-    getHelp: "获取帮助",
+    safetyTipsDescShort: "预防诈骗和犯罪",
+    getHelp: "查找附近警察",
+    getHelpDescShort: "直接打开地图应用",
     back: "返回",
+
+    stickyEmergency: "112紧急报警",
+    stickyEmergencySub: "遇到危险立即连接",
 
     emergencyTitle: "紧急报警",
     emergencyDesc: "如遇紧急情况，请点击下方按钮立即拨打电话。",
     call112: "立即拨打112",
     call119: "立即拨打119",
-    helpNow: "请求紧急帮助",
-    emergencyMode: "紧急模式",
+    helpNow: "立即请求帮助",
+
     emergencyModeTitle: "您现在需要帮助吗？",
     emergencyModeDesc: "如遇暴力、威胁、跟踪、性犯罪、抢劫或诈骗刚发生等紧急情况，请立即拨打112。",
     dangerCheckTitle: "以下情况请立即拨打112",
     dangerCheck1: "有人跟踪您或威胁您",
     dangerCheck2: "发生暴力、抢劫、性犯罪或紧急危险",
     dangerCheck3: "您刚刚遭遇语音诈骗或其他诈骗",
-    emergencyActionGuide: "确认当前位置后，立即点击112按钮。",
+    emergencyActionGuide: "确认当前位置后，点击大的112按钮。",
 
     tipsTitle: "防犯罪信息",
     tipsSubtitle: "请查看针对外国人的常见犯罪和诈骗类型。",
@@ -574,19 +623,17 @@ const translations = {
       "保留文件、聊天记录和转账记录，并立即联系112或相关机构。",
 
     helpTitle: "查找附近警察机关",
-    helpSubtitle:
-      "使用您的位置查找附近的警察署、派出所或警务站。",
-    useLocation: "使用我的位置",
+    helpSubtitle: "使用您的位置在地图应用中查找附近的警察署、派出所或警务站。",
+    useLocation: "确认我的位置",
     locationReady: "已确认您的当前位置。",
-    locationPending:
-      "允许位置权限后，将启用附近警察机关搜索功能。",
-    openNearbyPolice: "查看附近警察机关",
+    locationPending: "允许位置权限后，搜索会更准确。",
+    openNearbyPolice: "查找附近警察（打开地图）",
     locationError: "无法获取位置，请检查浏览器定位权限。",
-    policeGuide:
-      "点击按钮后，将在地图应用中直接搜索您附近的警察署、派出所等警察机关。",
+    policeGuide: "点击按钮后，将在地图应用中直接搜索您附近的警察署、派出所等警察机关。",
     direct112: "无需表单，直接连接112",
-    footer: "面向居民和外国人的试点安全网页应用",
-    mapSearchLabel: "警察机关地图搜索",
+    footer: "东豆川警察署试点安全网页应用",
+    mapSearchLabel: "附近警察地图搜索",
+    locationNote: "按钮会打开地图应用。",
   },
 };
 
@@ -598,15 +645,18 @@ const languageOptions = [
   { code: "zh", label: "中文" },
 ];
 
-function MenuButton({ icon, title, onClick, className = "" }) {
+function MainActionCard({ icon, title, desc, onClick, className = "" }) {
   return (
     <button
       onClick={onClick}
-      className={`w-full rounded-3xl p-5 text-left text-white shadow-lg transition hover:scale-[1.01] active:scale-[0.99] ${className}`}
+      className={`w-full rounded-[1.75rem] p-5 text-left shadow-lg transition hover:scale-[1.01] active:scale-[0.99] ${className}`}
     >
-      <div className="flex items-center gap-4">
-        <div className="rounded-2xl bg-white/20 p-3">{icon}</div>
-        <div className="text-lg font-bold">{title}</div>
+      <div className="flex items-start gap-4">
+        <div className="rounded-2xl bg-white/20 p-3 text-white">{icon}</div>
+        <div className="text-white">
+          <div className="text-lg font-extrabold leading-tight">{title}</div>
+          <div className="mt-1 text-sm text-white/85">{desc}</div>
+        </div>
       </div>
     </button>
   );
@@ -614,53 +664,49 @@ function MenuButton({ icon, title, onClick, className = "" }) {
 
 function TipDetailCard({ title, subtitle, icon, detail, isOpen, onToggle, t }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-start gap-3">
-        <div className="rounded-xl bg-slate-100 p-2">{icon}</div>
-        <div className="flex-1">
-          <div className="font-semibold text-slate-900">{title}</div>
-          <div className="mt-1 text-sm text-slate-500">{subtitle}</div>
-
-          <button
-            onClick={onToggle}
-            className="mt-3 inline-flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700"
-          >
-            {isOpen ? (
-              <>
-                <ChevronUp size={16} />
-                {t.hideDetails}
-              </>
-            ) : (
-              <>
-                <ChevronDown size={16} />
-                {t.showDetails}
-              </>
-            )}
-          </button>
+    <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+      <div className="p-4">
+        <div className="flex items-start gap-3">
+          <div className="rounded-2xl bg-slate-100 p-2">{icon}</div>
+          <div className="flex-1">
+            <div className="font-semibold text-slate-900">{title}</div>
+            <div className="mt-1 text-sm text-slate-500">{subtitle}</div>
+          </div>
         </div>
+
+        <button
+          onClick={onToggle}
+          className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700"
+        >
+          {isOpen ? (
+            <>
+              <ChevronUp size={16} />
+              {t.hideDetails}
+            </>
+          ) : (
+            <>
+              <ChevronDown size={16} />
+              {t.showDetails}
+            </>
+          )}
+        </button>
       </div>
 
       {isOpen && (
-        <div className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">
-          <div>
-            <div className="font-semibold text-slate-900">
-              {t.detailLabelSituation}
+        <div className="border-t border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+          <div className="space-y-4">
+            <div>
+              <div className="font-bold text-slate-900">{t.detailLabelSituation}</div>
+              <p className="mt-1 leading-6">{detail.situation}</p>
             </div>
-            <p className="mt-1">{detail.situation}</p>
-          </div>
-
-          <div>
-            <div className="font-semibold text-slate-900">
-              {t.detailLabelPrevention}
+            <div>
+              <div className="font-bold text-slate-900">{t.detailLabelPrevention}</div>
+              <p className="mt-1 leading-6">{detail.prevention}</p>
             </div>
-            <p className="mt-1">{detail.prevention}</p>
-          </div>
-
-          <div>
-            <div className="font-semibold text-slate-900">
-              {t.detailLabelAction}
+            <div>
+              <div className="font-bold text-slate-900">{t.detailLabelAction}</div>
+              <p className="mt-1 leading-6">{detail.action}</p>
             </div>
-            <p className="mt-1">{detail.action}</p>
           </div>
         </div>
       )}
@@ -808,20 +854,38 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-50 to-slate-100 p-4 text-slate-900">
-      <div className="mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl">
-        <div className="bg-gradient-to-r from-blue-700 to-sky-500 p-5 text-white">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-sm font-medium opacity-95">
-              <Globe size={18} />
-              <span>{t.langLabel}</span>
+    <div className="min-h-screen bg-slate-100 text-slate-900">
+      <div className="sticky top-0 z-50 border-b border-red-300 bg-red-600 px-4 py-3 shadow-lg">
+        <a
+          href="tel:112"
+          className="mx-auto flex w-full max-w-md items-center justify-between rounded-2xl bg-white px-4 py-3 text-red-600"
+        >
+          <div className="flex items-center gap-3">
+            <div className="rounded-xl bg-red-100 p-2">
+              <Siren size={18} />
             </div>
+            <div>
+              <div className="text-base font-extrabold">{t.stickyEmergency}</div>
+              <div className="text-xs font-medium text-red-500">{t.stickyEmergencySub}</div>
+            </div>
+          </div>
+          <Phone size={18} />
+        </a>
+      </div>
 
-            <div className="relative">
+      <div className="mx-auto w-full max-w-md p-4">
+        <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-sky-700 p-5 text-white">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 text-sm font-medium opacity-95">
+                <Globe size={18} />
+                <span>{t.langLabel}</span>
+              </div>
+
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="rounded-xl border border-white/30 bg-white/15 px-3 py-2 text-sm font-medium text-white outline-none backdrop-blur"
+                className="rounded-xl border border-white/40 bg-white/15 px-3 py-2 text-sm font-medium text-white outline-none backdrop-blur"
               >
                 {languageOptions.map((option) => (
                   <option
@@ -834,265 +898,267 @@ export default function App() {
                 ))}
               </select>
             </div>
+
+            <div className="mt-6 rounded-[1.75rem] bg-white/10 p-5 backdrop-blur">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">
+                <Shield size={14} />
+                {t.appSubtitle}
+              </div>
+              <h1 className="mt-4 text-3xl font-black leading-tight">{t.appTitle}</h1>
+              <p className="mt-3 text-lg font-bold leading-snug text-white">{t.heroTitle}</p>
+              <p className="mt-2 text-sm leading-6 text-blue-50">{t.heroBody}</p>
+            </div>
           </div>
 
-          <div className="mt-5">
-            <h1 className="text-3xl font-extrabold leading-tight">
-              {t.appTitle}
-            </h1>
-            <p className="mt-2 text-sm text-blue-50">{t.appSubtitle}</p>
-          </div>
-        </div>
+          <div className="p-5">
+            {screen === "home" && (
+              <div className="space-y-4">
+                <MainActionCard
+                  icon={<Siren size={26} />}
+                  title={t.emergency}
+                  desc={t.emergencyDescShort}
+                  onClick={() => setScreen("emergency")}
+                  className="bg-gradient-to-r from-red-600 to-rose-700"
+                />
 
-        <div className="p-5">
-          {screen === "home" && (
-            <div className="space-y-4">
-              <MenuButton
-                icon={<Siren size={24} />}
-                title={t.emergency}
-                onClick={() => setScreen("emergency")}
-                className="bg-gradient-to-r from-red-500 to-rose-600"
-              />
+                <MainActionCard
+                  icon={<TriangleAlert size={26} />}
+                  title={t.emergencyMode}
+                  desc={t.emergencyModeDescShort}
+                  onClick={() => setScreen("emergencyMode")}
+                  className="bg-gradient-to-r from-slate-900 to-red-800"
+                />
 
-              <MenuButton
-                icon={<ShieldAlert size={24} />}
-                title={t.emergencyMode}
-                onClick={() => setScreen("emergencyMode")}
-                className="bg-gradient-to-r from-rose-700 to-red-800"
-              />
+                <MainActionCard
+                  icon={<ShieldCheck size={26} />}
+                  title={t.safetyTips}
+                  desc={t.safetyTipsDescShort}
+                  onClick={() => setScreen("tips")}
+                  className="bg-gradient-to-r from-blue-700 to-sky-600"
+                />
 
-              <MenuButton
-                icon={<ShieldCheck size={24} />}
-                title={t.safetyTips}
-                onClick={() => setScreen("tips")}
-                className="bg-gradient-to-r from-blue-600 to-sky-600"
-              />
+                <MainActionCard
+                  icon={<Navigation size={26} />}
+                  title={t.getHelp}
+                  desc={t.getHelpDescShort}
+                  onClick={() => setScreen("help")}
+                  className="bg-gradient-to-r from-emerald-600 to-green-600"
+                />
 
-              <MenuButton
-                icon={<MapPin size={24} />}
-                title={t.getHelp}
-                onClick={() => setScreen("help")}
-                className="bg-gradient-to-r from-emerald-500 to-green-600"
-              />
-
-              <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
-                <div className="flex items-center gap-2 font-semibold text-slate-800">
-                  <Languages size={16} />
-                  {t.direct112}
+                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+                  <div className="flex items-center gap-2 font-bold text-slate-900">
+                    <Languages size={16} />
+                    {t.direct112}
+                  </div>
+                  <p className="mt-2 leading-6">{t.footer}</p>
                 </div>
-                <p className="mt-2">{t.footer}</p>
               </div>
-            </div>
-          )}
+            )}
 
-          {screen === "emergency" && (
-            <div className="space-y-4">
-              <button
-                onClick={() => setScreen("home")}
-                className="flex items-center gap-1 text-sm font-medium text-slate-500"
-              >
-                <ChevronLeft size={18} /> {t.back}
-              </button>
+            {screen === "emergency" && (
+              <div className="space-y-4">
+                <button
+                  onClick={() => setScreen("home")}
+                  className="flex items-center gap-1 text-sm font-medium text-slate-500"
+                >
+                  <ChevronLeft size={18} /> {t.back}
+                </button>
 
-              <div>
-                <h2 className="text-2xl font-bold">{t.emergencyTitle}</h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  {t.emergencyDesc}
-                </p>
+                <div className="rounded-3xl border border-red-200 bg-red-50 p-5">
+                  <h2 className="text-2xl font-black text-slate-900">{t.emergencyTitle}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{t.emergencyDesc}</p>
+                </div>
+
+                <a
+                  href="tel:112"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-5 text-xl font-extrabold text-white shadow-lg"
+                >
+                  <Phone size={22} /> {t.call112}
+                </a>
+
+                <a
+                  href="tel:119"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-orange-500 px-4 py-5 text-lg font-bold text-white shadow-lg"
+                >
+                  <Phone size={20} /> {t.call119}
+                </a>
+
+                <a
+                  href="tel:112"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-slate-900 px-4 py-5 text-lg font-bold text-white shadow-lg"
+                >
+                  <ShieldAlert size={20} /> {t.helpNow}
+                </a>
               </div>
+            )}
 
-              <a
-                href="tel:112"
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-5 text-lg font-bold text-white shadow-lg"
-              >
-                <Phone size={20} /> {t.call112}
-              </a>
+            {screen === "emergencyMode" && (
+              <div className="space-y-4 rounded-[1.75rem] bg-gradient-to-b from-red-800 via-red-700 to-slate-950 p-4 text-white shadow-2xl">
+                <button
+                  onClick={() => setScreen("home")}
+                  className="flex items-center gap-1 text-sm font-medium text-red-100"
+                >
+                  <ChevronLeft size={18} /> {t.back}
+                </button>
 
-              <a
-                href="tel:119"
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-orange-500 px-4 py-5 text-lg font-bold text-white shadow-lg"
-              >
-                <Phone size={20} /> {t.call119}
-              </a>
-
-              <a
-                href="tel:112"
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-rose-700 px-4 py-5 text-lg font-extrabold text-white shadow-lg"
-              >
-                <ShieldAlert size={20} /> {t.helpNow}
-              </a>
-            </div>
-          )}
-
-          {screen === "emergencyMode" && (
-            <div className="space-y-4 rounded-3xl border border-red-200 bg-red-50 p-4">
-              <button
-                onClick={() => setScreen("home")}
-                className="flex items-center gap-1 text-sm font-medium text-red-700"
-              >
-                <ChevronLeft size={18} /> {t.back}
-              </button>
-
-              <div className="rounded-3xl bg-gradient-to-r from-red-600 to-rose-700 p-5 text-white shadow-lg">
-                <div className="flex items-center gap-3">
-                  <TriangleAlert size={28} />
-                  <div>
-                    <h2 className="text-2xl font-extrabold">{t.emergencyModeTitle}</h2>
-                    <p className="mt-2 text-sm text-red-50">{t.emergencyModeDesc}</p>
+                <div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-2xl bg-white/15 p-3">
+                      <TriangleAlert size={28} className="animate-pulse" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-black leading-tight">{t.emergencyModeTitle}</h2>
+                      <p className="mt-2 text-sm leading-6 text-red-50">{t.emergencyModeDesc}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="rounded-2xl bg-white p-4 shadow-sm">
-                <div className="font-bold text-red-700">{t.dangerCheckTitle}</div>
-                <div className="mt-3 space-y-2 text-sm text-slate-700">
-                  <div className="flex gap-2"><span>•</span><span>{t.dangerCheck1}</span></div>
-                  <div className="flex gap-2"><span>•</span><span>{t.dangerCheck2}</span></div>
-                  <div className="flex gap-2"><span>•</span><span>{t.dangerCheck3}</span></div>
+                <div className="rounded-3xl bg-white p-4 text-slate-900 shadow-lg">
+                  <div className="font-black text-red-700">{t.dangerCheckTitle}</div>
+                  <div className="mt-3 space-y-3 text-sm leading-6">
+                    <div className="flex gap-2"><span>•</span><span>{t.dangerCheck1}</span></div>
+                    <div className="flex gap-2"><span>•</span><span>{t.dangerCheck2}</span></div>
+                    <div className="flex gap-2"><span>•</span><span>{t.dangerCheck3}</span></div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={requestLocation}
+                  className="w-full rounded-3xl bg-white px-4 py-4 text-base font-extrabold text-slate-900 shadow-lg"
+                >
+                  {t.useLocation}
+                </button>
+
+                <a
+                  href="tel:112"
+                  className="flex w-full animate-pulse items-center justify-center gap-2 rounded-3xl bg-red-500 px-4 py-5 text-2xl font-black text-white shadow-2xl"
+                >
+                  <Phone size={24} /> {t.call112}
+                </a>
+
+                <a
+                  href="tel:119"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-orange-500 px-4 py-4 text-lg font-bold text-white shadow-lg"
+                >
+                  <Phone size={20} /> {t.call119}
+                </a>
+
+                <div className="rounded-3xl bg-white/10 p-4 text-sm leading-6 text-red-50 backdrop-blur">
+                  <p>{t.emergencyActionGuide}</p>
+                  {coords && (
+                    <p className="mt-2 text-xs text-red-100">
+                      LAT {coords.lat.toFixed(4)} / LNG {coords.lng.toFixed(4)}
+                    </p>
+                  )}
+                  {locationError && (
+                    <p className="mt-2 font-semibold text-yellow-200">{locationError}</p>
+                  )}
                 </div>
               </div>
+            )}
 
-              <button
-                onClick={requestLocation}
-                className="w-full rounded-3xl bg-slate-900 px-4 py-4 text-base font-bold text-white shadow-lg"
-              >
-                {t.useLocation}
-              </button>
+            {screen === "tips" && (
+              <div className="space-y-4">
+                <button
+                  onClick={() => setScreen("home")}
+                  className="flex items-center gap-1 text-sm font-medium text-slate-500"
+                >
+                  <ChevronLeft size={18} /> {t.back}
+                </button>
 
-              <a
-                href="tel:112"
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-5 text-xl font-extrabold text-white shadow-lg"
-              >
-                <Phone size={22} /> {t.call112}
-              </a>
+                <div className="rounded-3xl border border-blue-200 bg-blue-50 p-5">
+                  <h2 className="text-2xl font-black text-slate-900">{t.tipsTitle}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{t.tipsSubtitle}</p>
+                </div>
 
-              <a
-                href="tel:119"
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-orange-500 px-4 py-4 text-lg font-bold text-white shadow-lg"
-              >
-                <Phone size={20} /> {t.call119}
-              </a>
-
-              <div className="rounded-2xl bg-white p-4 text-sm text-slate-700 shadow-sm">
-                <p>{t.emergencyActionGuide}</p>
-                {coords && (
-                  <p className="mt-2 text-xs text-slate-500">
-                    LAT {coords.lat.toFixed(4)} / LNG {coords.lng.toFixed(4)}
-                  </p>
-                )}
-                {locationError && (
-                  <p className="mt-2 font-semibold text-red-600">{locationError}</p>
-                )}
+                <div className="space-y-3">
+                  {tipDetails.map((tip) => (
+                    <TipDetailCard
+                      key={tip.key}
+                      title={tip.title}
+                      subtitle={tip.subtitle}
+                      icon={tip.icon}
+                      detail={tip.detail}
+                      isOpen={openTip === tip.key}
+                      onToggle={() => setOpenTip(openTip === tip.key ? null : tip.key)}
+                      t={t}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {screen === "tips" && (
-            <div className="space-y-4">
-              <button
-                onClick={() => setScreen("home")}
-                className="flex items-center gap-1 text-sm font-medium text-slate-500"
-              >
-                <ChevronLeft size={18} /> {t.back}
-              </button>
+            {screen === "help" && (
+              <div className="space-y-4">
+                <button
+                  onClick={() => setScreen("home")}
+                  className="flex items-center gap-1 text-sm font-medium text-slate-500"
+                >
+                  <ChevronLeft size={18} /> {t.back}
+                </button>
 
-              <div>
-                <h2 className="text-2xl font-bold">{t.tipsTitle}</h2>
-                <p className="mt-1 text-sm text-slate-500">{t.tipsSubtitle}</p>
-              </div>
+                <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-5">
+                  <h2 className="text-2xl font-black text-slate-900">{t.helpTitle}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{t.helpSubtitle}</p>
+                </div>
 
-              <div className="space-y-3">
-                {tipDetails.map((tip) => (
-                  <TipDetailCard
-                    key={tip.key}
-                    title={tip.title}
-                    subtitle={tip.subtitle}
-                    icon={tip.icon}
-                    detail={tip.detail}
-                    isOpen={openTip === tip.key}
-                    onToggle={() =>
-                      setOpenTip(openTip === tip.key ? null : tip.key)
-                    }
-                    t={t}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
+                  <div className="aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-slate-200 via-slate-100 to-sky-100 p-4">
+                    <div className="flex h-full flex-col justify-between">
+                      <div className="flex items-center gap-2 text-sm font-bold text-slate-700">
+                        <MapPin size={16} /> {t.mapSearchLabel}
+                      </div>
 
-          {screen === "help" && (
-            <div className="space-y-4">
-              <button
-                onClick={() => setScreen("home")}
-                className="flex items-center gap-1 text-sm font-medium text-slate-500"
-              >
-                <ChevronLeft size={18} /> {t.back}
-              </button>
+                      <div className="flex items-center justify-center">
+                        <div className="rounded-full bg-emerald-600 p-4 text-white shadow-lg">
+                          <MapPin size={26} />
+                        </div>
+                      </div>
 
-              <div>
-                <h2 className="text-2xl font-bold">{t.helpTitle}</h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  {t.helpSubtitle}
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-                <div className="aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-slate-200 via-slate-100 to-sky-100 p-4">
-                  <div className="flex h-full flex-col justify-between">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                      <MapPin size={16} /> {t.mapSearchLabel}
-                    </div>
-
-                    <div className="flex items-center justify-center">
-                      <div className="rounded-full bg-red-500 p-4 text-white shadow-lg">
-                        <MapPin size={26} />
+                      <div className="rounded-2xl bg-white/80 p-3 text-sm text-slate-700 backdrop-blur">
+                        {coords ? t.locationReady : t.locationPending}
+                        {coords && (
+                          <div className="mt-2 text-xs text-slate-500">
+                            LAT {coords.lat.toFixed(4)} / LNG {coords.lng.toFixed(4)}
+                          </div>
+                        )}
                       </div>
                     </div>
-
-                    <div className="rounded-2xl bg-white/80 p-3 text-sm text-slate-700 backdrop-blur">
-                      {coords ? t.locationReady : t.locationPending}
-                      {coords && (
-                        <div className="mt-2 text-xs text-slate-500">
-                          LAT {coords.lat.toFixed(4)} / LNG{" "}
-                          {coords.lng.toFixed(4)}
-                        </div>
-                      )}
-                    </div>
                   </div>
                 </div>
+
+                <button
+                  onClick={requestLocation}
+                  className="w-full rounded-3xl bg-blue-600 px-4 py-4 text-base font-extrabold text-white shadow-lg"
+                >
+                  {t.useLocation}
+                </button>
+
+                <button
+                  onClick={openNearbyPolice}
+                  className="w-full rounded-3xl bg-emerald-600 px-4 py-4 text-base font-extrabold text-white shadow-lg"
+                >
+                  {t.openNearbyPolice}
+                </button>
+
+                <p className="-mt-1 text-center text-xs text-slate-500">{t.locationNote}</p>
+
+                <a
+                  href="tel:112"
+                  className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-4 text-base font-extrabold text-white shadow-lg"
+                >
+                  <Phone size={18} /> {t.call112}
+                </a>
+
+                <div className="rounded-3xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
+                  <p>{t.policeGuide}</p>
+                  {locationError && (
+                    <p className="mt-2 font-semibold text-red-600">{locationError}</p>
+                  )}
+                </div>
               </div>
-
-              <button
-                onClick={requestLocation}
-                className="w-full rounded-3xl bg-blue-600 px-4 py-4 text-base font-bold text-white shadow-lg"
-              >
-                {t.useLocation}
-              </button>
-
-              <button
-                onClick={openNearbyPolice}
-                className="w-full rounded-3xl bg-emerald-600 px-4 py-4 text-base font-bold text-white shadow-lg"
-              >
-                {t.openNearbyPolice}
-              </button>
-
-              <a
-                href="tel:112"
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-red-600 px-4 py-4 text-base font-bold text-white shadow-lg"
-              >
-                <Phone size={18} /> {t.call112}
-              </a>
-
-              <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600">
-                <p>{t.policeGuide}</p>
-                {locationError && (
-                  <p className="mt-2 font-semibold text-red-600">
-                    {locationError}
-                  </p>
-                )}
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
